@@ -54,7 +54,9 @@ class BhulekhClient:
                 "http": proxy_url,
                 "https": proxy_url,
             }
-            logger.info("Proxy configured using PROXY_URL")
+            # Disable SSL/TLS validation so ScraperAPI's HTTPS proxy interception works
+            self.config.verify_tls = False
+            logger.info("Proxy configured using PROXY_URL, SSL verification disabled")
 
         retry = Retry(
             total=self.config.max_retries,
