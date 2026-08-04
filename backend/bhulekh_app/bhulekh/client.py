@@ -116,13 +116,18 @@ class BhulekhClient:
             request_headers["X-ScraperAPI-Premium"] = "true"
             request_headers["X-ScraperAPI-Country-Code"] = "in"
 
+        timeout = (self.config.connect_timeout_seconds, self.config.read_timeout_seconds)
+        if step == "submit":
+            # Captcha submission requires more time to compile the high-fidelity property card results
+            timeout = (10, 55)
+
         try:
             response = self.session.request(
                 method=method,
                 url=url,
                 headers=request_headers,
                 data=data,
-                timeout=(self.config.connect_timeout_seconds, self.config.read_timeout_seconds),
+                timeout=timeout,
                 verify=self.config.verify_tls,
             )
         except requests.RequestException as exc:
