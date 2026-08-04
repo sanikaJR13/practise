@@ -109,11 +109,18 @@ class BhulekhClient:
         scoped_logger = self.logger.bind_step(step)
         scoped_logger.info("Sending %s request to %s", method, url)
 
+        request_headers = dict(headers or {})
+        proxy_url = os.environ.get("PROXY_URL")
+        if proxy_url and "scraperapi" in proxy_url.lower():
+            # Instruct ScraperAPI to use Indian residential proxy IPs to bypass Mahabhulekh's firewall
+            request_headers["X-ScraperAPI-Premium"] = "true"
+            request_headers["X-ScraperAPI-Country-Code"] = "in"
+
         try:
             response = self.session.request(
                 method=method,
                 url=url,
-                headers=dict(headers or {}),
+                headers=request_headers,
                 data=data,
                 timeout=(self.config.connect_timeout_seconds, self.config.read_timeout_seconds),
                 verify=self.config.verify_tls,
