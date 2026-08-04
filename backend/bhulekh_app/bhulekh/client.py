@@ -6,6 +6,7 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 from typing import Mapping
 
+import os
 import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
@@ -45,6 +46,16 @@ class BhulekhClient:
         self.logger = logger
         self.config = config or ClientConfig()
         self.session = requests.Session()
+
+        # Route requests through a proxy if configured in env variables
+        proxy_url = os.environ.get("PROXY_URL")
+        if proxy_url:
+            self.session.proxies = {
+                "http": proxy_url,
+                "https": proxy_url,
+            }
+            logger.info("Proxy configured using PROXY_URL")
+
         retry = Retry(
             total=self.config.max_retries,
             read=self.config.max_retries,
