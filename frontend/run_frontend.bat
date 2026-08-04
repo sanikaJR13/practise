@@ -1,0 +1,6 @@
+@echo off
+echo Installing frontend npm packages...
+npm install
+echo Starting Vite Dev Server on port 5174...
+npm run dev
+pause

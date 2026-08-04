@@ -1,0 +1,18 @@
+# Node / Frontend / Build tools
+node_modules/
+dist/
+.vite/
+.env
+
+# Python / Django
+venv/
+__pycache__/
+*.pyc
+storage/
+staticfiles/
+db.sqlite3
+
+# OS/System files
+.DS_Store
+Thumbs.db
+*.log
