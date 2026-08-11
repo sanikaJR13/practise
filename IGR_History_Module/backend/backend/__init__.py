@@ -1,0 +1,1 @@
+# Django Project root init

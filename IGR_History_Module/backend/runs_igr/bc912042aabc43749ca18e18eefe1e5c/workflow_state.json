@@ -1,0 +1,48 @@
+{
+  "run_id": "bc912042aabc43749ca18e18eefe1e5c",
+  "status": "initialized",
+  "step": "initialized",
+  "latest_stable_step": "initialized",
+  "selected_labels": {},
+  "selected_district": null,
+  "selected_taluka": null,
+  "selected_village": null,
+  "year": 2025,
+  "property_number": "1",
+  "captcha_attempt_count": 0,
+  "submit_attempt_count": 0,
+  "cookies": {
+    "ASP.NET_SessionId": "z40w3s42gk3rwkulcjl1ewnb",
+    "SRVNAME": "App9-66"
+  },
+  "metadata": {
+    "workflow_initialized": {
+      "district": "interactive",
+      "taluka": "interactive",
+      "village": "interactive",
+      "year": 2025,
+      "property_number": "1",
+      "max_captcha_attempts": 3,
+      "max_ocr_attempts": 5,
+      "tesseract_cmd": null,
+      "metadata": {}
+    }
+  },
+  "updated_at": "2026-08-11T11:46:20.422080+00:00",
+  "artifacts": {
+    "run_dir": "runs_igr\\bc912042aabc43749ca18e18eefe1e5c",
+    "files": {
+      "metadata": [
+        "runs_igr\\bc912042aabc43749ca18e18eefe1e5c\\workflow_state.json"
+      ],
+      "requests": [
+        "runs_igr\\bc912042aabc43749ca18e18eefe1e5c\\requests\\initialize.request.json",
+        "runs_igr\\bc912042aabc43749ca18e18eefe1e5c\\requests\\open_search_form_full.request.json"
+      ],
+      "responses": [
+        "runs_igr\\bc912042aabc43749ca18e18eefe1e5c\\responses\\initialize.response.txt",
+        "runs_igr\\bc912042aabc43749ca18e18eefe1e5c\\responses\\open_search_form_full.response.txt"
+      ]
+    }
+  }
+}

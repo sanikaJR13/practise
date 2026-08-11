@@ -1,0 +1,57 @@
+{
+  "run_id": "48a388e85a654cf4ab88e5ddc4006039",
+  "status": "running",
+  "step": "district_selected",
+  "latest_stable_step": "district_selected",
+  "selected_labels": {
+    "district": "पुणे"
+  },
+  "selected_district": "1",
+  "selected_taluka": null,
+  "selected_village": null,
+  "year": 2025,
+  "property_number": "1",
+  "captcha_attempt_count": 0,
+  "submit_attempt_count": 0,
+  "cookies": {
+    "ASP.NET_SessionId": "t4talopbzb3hipnnfe1dogwh",
+    "SRVNAME": "App2-22"
+  },
+  "metadata": {
+    "workflow_initialized": {
+      "district": "1",
+      "taluka": "interactive",
+      "village": "interactive",
+      "year": 2025,
+      "property_number": "1",
+      "max_captcha_attempts": 3,
+      "max_ocr_attempts": 5,
+      "tesseract_cmd": null,
+      "metadata": {}
+    },
+    "district_selected": {
+      "district": "1"
+    }
+  },
+  "updated_at": "2026-08-06T06:25:34.010612+00:00",
+  "artifacts": {
+    "run_dir": "runs_igr\\48a388e85a654cf4ab88e5ddc4006039",
+    "files": {
+      "metadata": [
+        "runs_igr\\48a388e85a654cf4ab88e5ddc4006039\\workflow_state.json",
+        "runs_igr\\48a388e85a654cf4ab88e5ddc4006039\\workflow_state.json",
+        "runs_igr\\48a388e85a654cf4ab88e5ddc4006039\\workflow_state.json"
+      ],
+      "requests": [
+        "runs_igr\\48a388e85a654cf4ab88e5ddc4006039\\requests\\initialize.request.json",
+        "runs_igr\\48a388e85a654cf4ab88e5ddc4006039\\requests\\open_search_form_full.request.json",
+        "runs_igr\\48a388e85a654cf4ab88e5ddc4006039\\requests\\select_district_full.request.json"
+      ],
+      "responses": [
+        "runs_igr\\48a388e85a654cf4ab88e5ddc4006039\\responses\\initialize.response.txt",
+        "runs_igr\\48a388e85a654cf4ab88e5ddc4006039\\responses\\open_search_form_full.response.txt",
+        "runs_igr\\48a388e85a654cf4ab88e5ddc4006039\\responses\\select_district_full.response.txt"
+      ]
+    }
+  }
+}

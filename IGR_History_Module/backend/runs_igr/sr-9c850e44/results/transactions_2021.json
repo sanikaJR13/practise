@@ -1,0 +1,11 @@
+{
+  "year": 2021,
+  "transactions": [],
+  "status": "error",
+  "error": {
+    "message": "IGR search did not return records or a no-records message.",
+    "recoverable": false,
+    "captcha_attempt_count": 3,
+    "submit_attempt_count": 3
+  }
+}

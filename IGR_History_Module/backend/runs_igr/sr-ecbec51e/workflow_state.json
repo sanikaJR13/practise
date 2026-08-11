@@ -1,0 +1,121 @@
+{
+  "run_id": "sr-ecbec51e",
+  "status": "success",
+  "step": "result_ready",
+  "latest_stable_step": "year_processing",
+  "selected_labels": {
+    "district": "पुणे",
+    "taluka": "खेड",
+    "village": "मरकळ"
+  },
+  "selected_district": "1",
+  "selected_taluka": "4 ",
+  "selected_village": "मरकळ",
+  "year": 2026,
+  "property_number": "472",
+  "captcha_attempt_count": 1,
+  "submit_attempt_count": 1,
+  "cookies": {
+    "ASP.NET_SessionId": "k5e53l02ye2i4g14ontzjw01",
+    "SRVNAME": "App2-22"
+  },
+  "metadata": {
+    "workflow_initialized": {
+      "district": "1",
+      "taluka": "4 ",
+      "village": "मरकळ",
+      "year": 2026,
+      "property_number": "472",
+      "max_captcha_attempts": 3,
+      "max_ocr_attempts": 5,
+      "tesseract_cmd": null,
+      "metadata": {}
+    },
+    "district_selected": {
+      "district": "1"
+    },
+    "taluka_selected": {
+      "taluka": "4 "
+    },
+    "village_selected": {
+      "village": "मरकळ"
+    },
+    "year_processing": {
+      "year": 2026,
+      "property_number": "472"
+    },
+    "captcha_ready": {
+      "captcha_path": "runs_igr\\sr-ecbec51e\\captchas\\igr_captcha_sr-ecbec51e.png",
+      "captcha_url": "https://freesearchigrservice.maharashtra.gov.in/Handler.ashx?txt=367c648",
+      "ocr_text": "87654C",
+      "captcha_attempt_count": 0
+    },
+    "submit_attempted": {
+      "year": 2026,
+      "property_number": "472",
+      "submit_attempt_count": 1
+    },
+    "result_ready": {
+      "result_path": "runs_igr\\sr-ecbec51e\\results\\transactions_2026.json",
+      "transaction_count": 0
+    }
+  },
+  "updated_at": "2026-08-11T11:51:20.992568+00:00",
+  "captcha": {
+    "image_path": "runs_igr\\sr-ecbec51e\\captchas\\igr_captcha_sr-ecbec51e.png",
+    "image_url": "https://freesearchigrservice.maharashtra.gov.in/Handler.ashx?txt=367c648",
+    "source_html_id": "imgCaptcha_new",
+    "ocr_text": "87654C",
+    "attempt": 0,
+    "created_at": "2026-08-11T11:50:49.905736+00:00"
+  },
+  "artifacts": {
+    "run_dir": "runs_igr\\sr-ecbec51e",
+    "files": {
+      "metadata": [
+        "runs_igr\\sr-ecbec51e\\workflow_state.json",
+        "runs_igr\\sr-ecbec51e\\workflow_state.json",
+        "runs_igr\\sr-ecbec51e\\workflow_state.json",
+        "runs_igr\\sr-ecbec51e\\workflow_state.json",
+        "runs_igr\\sr-ecbec51e\\workflow_state.json",
+        "runs_igr\\sr-ecbec51e\\workflow_state.json",
+        "runs_igr\\sr-ecbec51e\\workflow_state.json",
+        "runs_igr\\sr-ecbec51e\\workflow_state.json",
+        "runs_igr\\sr-ecbec51e\\workflow_state.json",
+        "runs_igr\\sr-ecbec51e\\workflow_state.json",
+        "runs_igr\\sr-ecbec51e\\workflow_state.json",
+        "runs_igr\\sr-ecbec51e\\workflow_state.json",
+        "runs_igr\\sr-ecbec51e\\workflow_state.json",
+        "runs_igr\\sr-ecbec51e\\workflow_state.json",
+        "runs_igr\\sr-ecbec51e\\workflow_state.json"
+      ],
+      "requests": [
+        "runs_igr\\sr-ecbec51e\\requests\\initialize.request.json",
+        "runs_igr\\sr-ecbec51e\\requests\\open_search_form_full.request.json",
+        "runs_igr\\sr-ecbec51e\\requests\\select_district_full.request.json",
+        "runs_igr\\sr-ecbec51e\\requests\\select_taluka_full.request.json",
+        "runs_igr\\sr-ecbec51e\\requests\\select_village_full.request.json",
+        "runs_igr\\sr-ecbec51e\\requests\\download_captcha.request.json",
+        "runs_igr\\sr-ecbec51e\\requests\\submit.request.json"
+      ],
+      "responses": [
+        "runs_igr\\sr-ecbec51e\\responses\\initialize.response.txt",
+        "runs_igr\\sr-ecbec51e\\responses\\open_search_form_full.response.txt",
+        "runs_igr\\sr-ecbec51e\\responses\\select_district_full.response.txt",
+        "runs_igr\\sr-ecbec51e\\responses\\select_taluka_full.response.txt",
+        "runs_igr\\sr-ecbec51e\\responses\\select_village_full.response.txt",
+        "runs_igr\\sr-ecbec51e\\responses\\download_captcha.response.txt",
+        "runs_igr\\sr-ecbec51e\\responses\\submit.response.txt"
+      ],
+      "captchas": [
+        "runs_igr\\sr-ecbec51e\\captchas\\igr_captcha_sr-ecbec51e.png"
+      ],
+      "results": [
+        "runs_igr\\sr-ecbec51e\\results\\transactions_2026.json"
+      ],
+      "normalized": [
+        "runs_igr\\sr-ecbec51e\\normalized_result.json"
+      ]
+    }
+  }
+}

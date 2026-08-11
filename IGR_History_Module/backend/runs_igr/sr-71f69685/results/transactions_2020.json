@@ -1,0 +1,11 @@
+{
+  "year": 2020,
+  "transactions": [],
+  "status": "error",
+  "error": {
+    "message": "Captcha retry limit exhausted.",
+    "recoverable": false,
+    "captcha_attempt_count": 3,
+    "submit_attempt_count": 3
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "year": 2023,
+  "transactions": [],
+  "status": "error",
+  "run_id": "sr-76f24aca",
+  "workflow_step": "submitted",
+  "selected_labels": {
+    "district": "पुणे",
+    "taluka": "खेड",
+    "village": "मरकळ"
+  },
+  "artifacts": {
+    "run_dir": "runs_igr\\sr-76f24aca",
+    "files": {
+      "metadata": [
+        "runs_igr\\sr-76f24aca\\workflow_state.json",
+        "runs_igr\\sr-76f24aca\\workflow_state.json",
+        "runs_igr\\sr-76f24aca\\workflow_state.json",
+        "runs_igr\\sr-76f24aca\\workflow_state.json",
+        "runs_igr\\sr-76f24aca\\workflow_state.json",
+        "runs_igr\\sr-76f24aca\\workflow_state.json",
+        "runs_igr\\sr-76f24aca\\workflow_state.json",
+        "runs_igr\\sr-76f24aca\\workflow_state.json",
+        "runs_igr\\sr-76f24aca\\workflow_state.json",
+        "runs_igr\\sr-76f24aca\\workflow_state.json",
+        "runs_igr\\sr-76f24aca\\workflow_state.json",
+        "runs_igr\\sr-76f24aca\\workflow_state.json",
+        "runs_igr\\sr-76f24aca\\workflow_state.json",
+        "runs_igr\\sr-76f24aca\\workflow_state.json",
+        "runs_igr\\sr-76f24aca\\workflow_state.json"
+      ],
+      "requests": [
+        "runs_igr\\sr-76f24aca\\requests\\initialize.request.json",
+        "runs_igr\\sr-76f24aca\\requests\\open_search_form_full.request.json",
+        "runs_igr\\sr-76f24aca\\requests\\select_district_full.request.json",
+        "runs_igr\\sr-76f24aca\\requests\\select_taluka_full.request.json",
+        "runs_igr\\sr-76f24aca\\requests\\select_village_full.request.json",
+        "runs_igr\\sr-76f24aca\\requests\\download_captcha.request.json",
+        "runs_igr\\sr-76f24aca\\requests\\submit.request.json"
+      ],
+      "responses": [
+        "runs_igr\\sr-76f24aca\\responses\\initialize.response.txt",
+        "runs_igr\\sr-76f24aca\\responses\\open_search_form_full.response.txt",
+        "runs_igr\\sr-76f24aca\\responses\\select_district_full.response.txt",
+        "runs_igr\\sr-76f24aca\\responses\\select_taluka_full.response.txt",
+        "runs_igr\\sr-76f24aca\\responses\\select_village_full.response.txt",
+        "runs_igr\\sr-76f24aca\\responses\\download_captcha.response.txt",
+        "runs_igr\\sr-76f24aca\\responses\\submit.response.txt"
+      ],
+      "captchas": [
+        "runs_igr\\sr-76f24aca\\captchas\\igr_captcha_sr-76f24aca.png"
+      ],
+      "results": [
+        "runs_igr\\sr-76f24aca\\results\\transactions_2023.json"
+      ]
+    }
+  },
+  "error": {
+    "message": "IGR search did not return records or a no-records message.",
+    "recoverable": true,
+    "captcha_attempt_count": 1,
+    "submit_attempt_count": 1
+  }
+}

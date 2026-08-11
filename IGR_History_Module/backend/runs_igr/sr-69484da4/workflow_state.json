@@ -1,0 +1,142 @@
+{
+  "run_id": "sr-69484da4",
+  "status": "success",
+  "step": "result_ready",
+  "latest_stable_step": "year_processing",
+  "selected_labels": {
+    "district": "पुणे",
+    "taluka": "खेड",
+    "village": "मरकळ"
+  },
+  "selected_district": "1",
+  "selected_taluka": "4 ",
+  "selected_village": "मरकळ",
+  "year": 2025,
+  "property_number": "472",
+  "captcha_attempt_count": 2,
+  "submit_attempt_count": 2,
+  "cookies": {
+    "ASP.NET_SessionId": "zaynkkxzr5lbww2ur4kodfme",
+    "SRVNAME": "App5-44"
+  },
+  "metadata": {
+    "workflow_initialized": {
+      "district": "1",
+      "taluka": "4 ",
+      "village": "मरकळ",
+      "year": 2025,
+      "property_number": "472",
+      "max_captcha_attempts": 3,
+      "max_ocr_attempts": 5,
+      "tesseract_cmd": null,
+      "metadata": {}
+    },
+    "district_selected": {
+      "district": "1"
+    },
+    "taluka_selected": {
+      "taluka": "4 "
+    },
+    "village_selected": {
+      "village": "मरकळ"
+    },
+    "year_processing": {
+      "year": 2025,
+      "property_number": "472"
+    },
+    "captcha_ready": {
+      "captcha_path": "runs_igr\\sr-69484da4\\captchas\\igr_captcha_sr-69484da4_1.png",
+      "captcha_url": "https://freesearchigrservice.maharashtra.gov.in/Handler.ashx?txt=166e17",
+      "ocr_text": "469BAB",
+      "captcha_attempt_count": 1
+    },
+    "submit_attempted": {
+      "year": 2025,
+      "property_number": "472",
+      "submit_attempt_count": 2
+    },
+    "error": {
+      "message": "IGR search did not return records or a no-records message.",
+      "recoverable": true,
+      "captcha_attempt_count": 1,
+      "submit_attempt_count": 1
+    },
+    "result_ready": {
+      "result_path": "runs_igr\\sr-69484da4\\results\\transactions_2025.json",
+      "transaction_count": 0
+    }
+  },
+  "updated_at": "2026-08-11T11:50:40.193797+00:00",
+  "captcha": {
+    "image_path": "runs_igr\\sr-69484da4\\captchas\\igr_captcha_sr-69484da4_1.png",
+    "image_url": "https://freesearchigrservice.maharashtra.gov.in/Handler.ashx?txt=166e17",
+    "source_html_id": "imgCaptcha_new",
+    "ocr_text": "469BAB",
+    "attempt": 1,
+    "created_at": "2026-08-11T11:50:14.908056+00:00"
+  },
+  "artifacts": {
+    "run_dir": "runs_igr\\sr-69484da4",
+    "files": {
+      "metadata": [
+        "runs_igr\\sr-69484da4\\workflow_state.json",
+        "runs_igr\\sr-69484da4\\workflow_state.json",
+        "runs_igr\\sr-69484da4\\workflow_state.json",
+        "runs_igr\\sr-69484da4\\workflow_state.json",
+        "runs_igr\\sr-69484da4\\workflow_state.json",
+        "runs_igr\\sr-69484da4\\workflow_state.json",
+        "runs_igr\\sr-69484da4\\workflow_state.json",
+        "runs_igr\\sr-69484da4\\workflow_state.json",
+        "runs_igr\\sr-69484da4\\workflow_state.json",
+        "runs_igr\\sr-69484da4\\workflow_state.json",
+        "runs_igr\\sr-69484da4\\workflow_state.json",
+        "runs_igr\\sr-69484da4\\workflow_state.json",
+        "runs_igr\\sr-69484da4\\workflow_state.json",
+        "runs_igr\\sr-69484da4\\workflow_state.json",
+        "runs_igr\\sr-69484da4\\workflow_state.json",
+        "runs_igr\\sr-69484da4\\workflow_state.json",
+        "runs_igr\\sr-69484da4\\workflow_state.json",
+        "runs_igr\\sr-69484da4\\workflow_state.json",
+        "runs_igr\\sr-69484da4\\workflow_state.json",
+        "runs_igr\\sr-69484da4\\workflow_state.json",
+        "runs_igr\\sr-69484da4\\workflow_state.json"
+      ],
+      "requests": [
+        "runs_igr\\sr-69484da4\\requests\\initialize.request.json",
+        "runs_igr\\sr-69484da4\\requests\\open_search_form_full.request.json",
+        "runs_igr\\sr-69484da4\\requests\\select_district_full.request.json",
+        "runs_igr\\sr-69484da4\\requests\\select_taluka_full.request.json",
+        "runs_igr\\sr-69484da4\\requests\\select_village_full.request.json",
+        "runs_igr\\sr-69484da4\\requests\\download_captcha.request.json",
+        "runs_igr\\sr-69484da4\\requests\\submit.request.json",
+        "runs_igr\\sr-69484da4\\requests\\refresh_captcha.request.json",
+        "runs_igr\\sr-69484da4\\requests\\download_captcha.request.json",
+        "runs_igr\\sr-69484da4\\requests\\submit.request.json"
+      ],
+      "responses": [
+        "runs_igr\\sr-69484da4\\responses\\initialize.response.txt",
+        "runs_igr\\sr-69484da4\\responses\\open_search_form_full.response.txt",
+        "runs_igr\\sr-69484da4\\responses\\select_district_full.response.txt",
+        "runs_igr\\sr-69484da4\\responses\\select_taluka_full.response.txt",
+        "runs_igr\\sr-69484da4\\responses\\select_village_full.response.txt",
+        "runs_igr\\sr-69484da4\\responses\\download_captcha.response.txt",
+        "runs_igr\\sr-69484da4\\responses\\submit.response.txt",
+        "runs_igr\\sr-69484da4\\responses\\refresh_captcha.response.txt",
+        "runs_igr\\sr-69484da4\\responses\\download_captcha.response.txt",
+        "runs_igr\\sr-69484da4\\responses\\submit.response.txt"
+      ],
+      "captchas": [
+        "runs_igr\\sr-69484da4\\captchas\\igr_captcha_sr-69484da4.png",
+        "runs_igr\\sr-69484da4\\captchas\\igr_captcha_sr-69484da4_1.png"
+      ],
+      "results": [
+        "runs_igr\\sr-69484da4\\results\\transactions_2025.json",
+        "runs_igr\\sr-69484da4\\results\\transactions_2025.json"
+      ],
+      "normalized": [
+        "runs_igr\\sr-69484da4\\normalized_result.json",
+        "runs_igr\\sr-69484da4\\normalized_result.json"
+      ]
+    }
+  }
+}

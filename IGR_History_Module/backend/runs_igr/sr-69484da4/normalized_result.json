@@ -1,0 +1,76 @@
+{
+  "year": 2025,
+  "transactions": [],
+  "status": "empty",
+  "run_id": "sr-69484da4",
+  "workflow_step": "result_ready",
+  "selected_labels": {
+    "district": "पुणे",
+    "taluka": "खेड",
+    "village": "मरकळ"
+  },
+  "artifacts": {
+    "run_dir": "runs_igr\\sr-69484da4",
+    "files": {
+      "metadata": [
+        "runs_igr\\sr-69484da4\\workflow_state.json",
+        "runs_igr\\sr-69484da4\\workflow_state.json",
+        "runs_igr\\sr-69484da4\\workflow_state.json",
+        "runs_igr\\sr-69484da4\\workflow_state.json",
+        "runs_igr\\sr-69484da4\\workflow_state.json",
+        "runs_igr\\sr-69484da4\\workflow_state.json",
+        "runs_igr\\sr-69484da4\\workflow_state.json",
+        "runs_igr\\sr-69484da4\\workflow_state.json",
+        "runs_igr\\sr-69484da4\\workflow_state.json",
+        "runs_igr\\sr-69484da4\\workflow_state.json",
+        "runs_igr\\sr-69484da4\\workflow_state.json",
+        "runs_igr\\sr-69484da4\\workflow_state.json",
+        "runs_igr\\sr-69484da4\\workflow_state.json",
+        "runs_igr\\sr-69484da4\\workflow_state.json",
+        "runs_igr\\sr-69484da4\\workflow_state.json",
+        "runs_igr\\sr-69484da4\\workflow_state.json",
+        "runs_igr\\sr-69484da4\\workflow_state.json",
+        "runs_igr\\sr-69484da4\\workflow_state.json",
+        "runs_igr\\sr-69484da4\\workflow_state.json",
+        "runs_igr\\sr-69484da4\\workflow_state.json",
+        "runs_igr\\sr-69484da4\\workflow_state.json"
+      ],
+      "requests": [
+        "runs_igr\\sr-69484da4\\requests\\initialize.request.json",
+        "runs_igr\\sr-69484da4\\requests\\open_search_form_full.request.json",
+        "runs_igr\\sr-69484da4\\requests\\select_district_full.request.json",
+        "runs_igr\\sr-69484da4\\requests\\select_taluka_full.request.json",
+        "runs_igr\\sr-69484da4\\requests\\select_village_full.request.json",
+        "runs_igr\\sr-69484da4\\requests\\download_captcha.request.json",
+        "runs_igr\\sr-69484da4\\requests\\submit.request.json",
+        "runs_igr\\sr-69484da4\\requests\\refresh_captcha.request.json",
+        "runs_igr\\sr-69484da4\\requests\\download_captcha.request.json",
+        "runs_igr\\sr-69484da4\\requests\\submit.request.json"
+      ],
+      "responses": [
+        "runs_igr\\sr-69484da4\\responses\\initialize.response.txt",
+        "runs_igr\\sr-69484da4\\responses\\open_search_form_full.response.txt",
+        "runs_igr\\sr-69484da4\\responses\\select_district_full.response.txt",
+        "runs_igr\\sr-69484da4\\responses\\select_taluka_full.response.txt",
+        "runs_igr\\sr-69484da4\\responses\\select_village_full.response.txt",
+        "runs_igr\\sr-69484da4\\responses\\download_captcha.response.txt",
+        "runs_igr\\sr-69484da4\\responses\\submit.response.txt",
+        "runs_igr\\sr-69484da4\\responses\\refresh_captcha.response.txt",
+        "runs_igr\\sr-69484da4\\responses\\download_captcha.response.txt",
+        "runs_igr\\sr-69484da4\\responses\\submit.response.txt"
+      ],
+      "captchas": [
+        "runs_igr\\sr-69484da4\\captchas\\igr_captcha_sr-69484da4.png",
+        "runs_igr\\sr-69484da4\\captchas\\igr_captcha_sr-69484da4_1.png"
+      ],
+      "results": [
+        "runs_igr\\sr-69484da4\\results\\transactions_2025.json",
+        "runs_igr\\sr-69484da4\\results\\transactions_2025.json"
+      ],
+      "normalized": [
+        "runs_igr\\sr-69484da4\\normalized_result.json"
+      ]
+    }
+  },
+  "error": null
+}

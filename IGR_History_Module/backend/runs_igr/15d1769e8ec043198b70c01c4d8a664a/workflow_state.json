@@ -1,0 +1,65 @@
+{
+  "run_id": "15d1769e8ec043198b70c01c4d8a664a",
+  "status": "running",
+  "step": "taluka_selected",
+  "latest_stable_step": "taluka_selected",
+  "selected_labels": {
+    "district": "पुणे",
+    "taluka": "वेल्हा"
+  },
+  "selected_district": "1",
+  "selected_taluka": "11",
+  "selected_village": null,
+  "year": 2025,
+  "property_number": "1",
+  "captcha_attempt_count": 0,
+  "submit_attempt_count": 0,
+  "cookies": {
+    "ASP.NET_SessionId": "iizljlcenriqp4y4jvl3xax3",
+    "SRVNAME": "App7-86"
+  },
+  "metadata": {
+    "workflow_initialized": {
+      "district": "1",
+      "taluka": "11",
+      "village": "interactive",
+      "year": 2025,
+      "property_number": "1",
+      "max_captcha_attempts": 3,
+      "max_ocr_attempts": 5,
+      "tesseract_cmd": null,
+      "metadata": {}
+    },
+    "district_selected": {
+      "district": "1"
+    },
+    "taluka_selected": {
+      "taluka": "11"
+    }
+  },
+  "updated_at": "2026-08-11T11:46:49.569015+00:00",
+  "artifacts": {
+    "run_dir": "runs_igr\\15d1769e8ec043198b70c01c4d8a664a",
+    "files": {
+      "metadata": [
+        "runs_igr\\15d1769e8ec043198b70c01c4d8a664a\\workflow_state.json",
+        "runs_igr\\15d1769e8ec043198b70c01c4d8a664a\\workflow_state.json",
+        "runs_igr\\15d1769e8ec043198b70c01c4d8a664a\\workflow_state.json",
+        "runs_igr\\15d1769e8ec043198b70c01c4d8a664a\\workflow_state.json",
+        "runs_igr\\15d1769e8ec043198b70c01c4d8a664a\\workflow_state.json"
+      ],
+      "requests": [
+        "runs_igr\\15d1769e8ec043198b70c01c4d8a664a\\requests\\initialize.request.json",
+        "runs_igr\\15d1769e8ec043198b70c01c4d8a664a\\requests\\open_search_form_full.request.json",
+        "runs_igr\\15d1769e8ec043198b70c01c4d8a664a\\requests\\select_district_full.request.json",
+        "runs_igr\\15d1769e8ec043198b70c01c4d8a664a\\requests\\select_taluka_full.request.json"
+      ],
+      "responses": [
+        "runs_igr\\15d1769e8ec043198b70c01c4d8a664a\\responses\\initialize.response.txt",
+        "runs_igr\\15d1769e8ec043198b70c01c4d8a664a\\responses\\open_search_form_full.response.txt",
+        "runs_igr\\15d1769e8ec043198b70c01c4d8a664a\\responses\\select_district_full.response.txt",
+        "runs_igr\\15d1769e8ec043198b70c01c4d8a664a\\responses\\select_taluka_full.response.txt"
+      ]
+    }
+  }
+}

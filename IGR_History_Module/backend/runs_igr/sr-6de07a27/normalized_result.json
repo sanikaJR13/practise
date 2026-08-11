@@ -1,0 +1,109 @@
+{
+  "year": 2024,
+  "transactions": [],
+  "status": "error",
+  "run_id": "sr-6de07a27",
+  "workflow_step": "submitted",
+  "selected_labels": {
+    "district": "भंडारा",
+    "taluka": "भंडारा",
+    "village": "उमरी"
+  },
+  "artifacts": {
+    "run_dir": "runs_igr\\sr-6de07a27",
+    "files": {
+      "metadata": [
+        "runs_igr\\sr-6de07a27\\workflow_state.json",
+        "runs_igr\\sr-6de07a27\\workflow_state.json",
+        "runs_igr\\sr-6de07a27\\workflow_state.json",
+        "runs_igr\\sr-6de07a27\\workflow_state.json",
+        "runs_igr\\sr-6de07a27\\workflow_state.json",
+        "runs_igr\\sr-6de07a27\\workflow_state.json",
+        "runs_igr\\sr-6de07a27\\workflow_state.json",
+        "runs_igr\\sr-6de07a27\\workflow_state.json",
+        "runs_igr\\sr-6de07a27\\workflow_state.json",
+        "runs_igr\\sr-6de07a27\\workflow_state.json",
+        "runs_igr\\sr-6de07a27\\workflow_state.json",
+        "runs_igr\\sr-6de07a27\\workflow_state.json",
+        "runs_igr\\sr-6de07a27\\workflow_state.json",
+        "runs_igr\\sr-6de07a27\\workflow_state.json",
+        "runs_igr\\sr-6de07a27\\workflow_state.json",
+        "runs_igr\\sr-6de07a27\\workflow_state.json",
+        "runs_igr\\sr-6de07a27\\workflow_state.json",
+        "runs_igr\\sr-6de07a27\\workflow_state.json",
+        "runs_igr\\sr-6de07a27\\workflow_state.json",
+        "runs_igr\\sr-6de07a27\\workflow_state.json",
+        "runs_igr\\sr-6de07a27\\workflow_state.json",
+        "runs_igr\\sr-6de07a27\\workflow_state.json",
+        "runs_igr\\sr-6de07a27\\workflow_state.json",
+        "runs_igr\\sr-6de07a27\\workflow_state.json",
+        "runs_igr\\sr-6de07a27\\workflow_state.json",
+        "runs_igr\\sr-6de07a27\\workflow_state.json",
+        "runs_igr\\sr-6de07a27\\workflow_state.json",
+        "runs_igr\\sr-6de07a27\\workflow_state.json",
+        "runs_igr\\sr-6de07a27\\workflow_state.json",
+        "runs_igr\\sr-6de07a27\\workflow_state.json",
+        "runs_igr\\sr-6de07a27\\workflow_state.json",
+        "runs_igr\\sr-6de07a27\\workflow_state.json",
+        "runs_igr\\sr-6de07a27\\workflow_state.json",
+        "runs_igr\\sr-6de07a27\\workflow_state.json"
+      ],
+      "requests": [
+        "runs_igr\\sr-6de07a27\\requests\\initialize.request.json",
+        "runs_igr\\sr-6de07a27\\requests\\open_search_form_full.request.json",
+        "runs_igr\\sr-6de07a27\\requests\\select_district_full.request.json",
+        "runs_igr\\sr-6de07a27\\requests\\select_taluka_full.request.json",
+        "runs_igr\\sr-6de07a27\\requests\\select_village_full.request.json",
+        "runs_igr\\sr-6de07a27\\requests\\download_captcha.request.json",
+        "runs_igr\\sr-6de07a27\\requests\\submit.request.json",
+        "runs_igr\\sr-6de07a27\\requests\\initialize.request.json",
+        "runs_igr\\sr-6de07a27\\requests\\open_search_form_full.request.json",
+        "runs_igr\\sr-6de07a27\\requests\\select_district_full.request.json",
+        "runs_igr\\sr-6de07a27\\requests\\select_taluka_full.request.json",
+        "runs_igr\\sr-6de07a27\\requests\\select_village_full.request.json",
+        "runs_igr\\sr-6de07a27\\requests\\download_captcha.request.json",
+        "runs_igr\\sr-6de07a27\\requests\\submit.request.json",
+        "runs_igr\\sr-6de07a27\\requests\\refresh_captcha.request.json",
+        "runs_igr\\sr-6de07a27\\requests\\download_captcha.request.json",
+        "runs_igr\\sr-6de07a27\\requests\\submit.request.json"
+      ],
+      "responses": [
+        "runs_igr\\sr-6de07a27\\responses\\initialize.response.txt",
+        "runs_igr\\sr-6de07a27\\responses\\open_search_form_full.response.txt",
+        "runs_igr\\sr-6de07a27\\responses\\select_district_full.response.txt",
+        "runs_igr\\sr-6de07a27\\responses\\select_taluka_full.response.txt",
+        "runs_igr\\sr-6de07a27\\responses\\select_village_full.response.txt",
+        "runs_igr\\sr-6de07a27\\responses\\download_captcha.response.txt",
+        "runs_igr\\sr-6de07a27\\responses\\submit.response.txt",
+        "runs_igr\\sr-6de07a27\\responses\\initialize.response.txt",
+        "runs_igr\\sr-6de07a27\\responses\\open_search_form_full.response.txt",
+        "runs_igr\\sr-6de07a27\\responses\\select_district_full.response.txt",
+        "runs_igr\\sr-6de07a27\\responses\\select_taluka_full.response.txt",
+        "runs_igr\\sr-6de07a27\\responses\\select_village_full.response.txt",
+        "runs_igr\\sr-6de07a27\\responses\\download_captcha.response.txt",
+        "runs_igr\\sr-6de07a27\\responses\\submit.response.txt",
+        "runs_igr\\sr-6de07a27\\responses\\refresh_captcha.response.txt",
+        "runs_igr\\sr-6de07a27\\responses\\download_captcha.response.txt",
+        "runs_igr\\sr-6de07a27\\responses\\submit.response.txt"
+      ],
+      "captchas": [
+        "runs_igr\\sr-6de07a27\\captchas\\igr_captcha_sr-6de07a27.png",
+        "runs_igr\\sr-6de07a27\\captchas\\igr_captcha_sr-6de07a27_1.png",
+        "runs_igr\\sr-6de07a27\\captchas\\igr_captcha_sr-6de07a27_2.png"
+      ],
+      "results": [
+        "runs_igr\\sr-6de07a27\\results\\transactions_2024.json",
+        "runs_igr\\sr-6de07a27\\results\\transactions_2024.json"
+      ],
+      "normalized": [
+        "runs_igr\\sr-6de07a27\\normalized_result.json"
+      ]
+    }
+  },
+  "error": {
+    "message": "IGR search did not return records or a no-records message.",
+    "recoverable": false,
+    "captcha_attempt_count": 3,
+    "submit_attempt_count": 3
+  }
+}
