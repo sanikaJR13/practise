@@ -45,6 +45,7 @@ class ClientConfig:
     read_timeout_seconds: int = DEFAULT_TIMEOUT_SECONDS
     max_retries: int = DEFAULT_MAX_HTTP_RETRIES
     verify_tls: bool = True
+    request_delay_seconds: float = float(os.environ.get("IGR_REQUEST_DELAY", "0.3"))
 
 
 @dataclass(slots=True)
@@ -258,7 +259,7 @@ class IGRClient:
         data: Mapping[str, str] | None = None,
     ) -> HttpExchange:
         # Introduce rate-limiting delay to mimic human behavior and avoid server 500 errors
-        time.sleep(1.2)
+        time.sleep(self.config.request_delay_seconds)
         started_at = datetime.now(timezone.utc).isoformat()
         self.logger.info("Sending %s request to %s", method, url)
         response = self.session.request(
@@ -296,7 +297,7 @@ class IGRClient:
         data: Mapping[str, str] | None = None,
     ) -> tuple[HttpExchange, bytes]:
         # Introduce rate-limiting delay
-        time.sleep(1.2)
+        time.sleep(self.config.request_delay_seconds)
         started_at = datetime.now(timezone.utc).isoformat()
         self.logger.info("Sending %s request to %s", method, url)
         response = self.session.request(
