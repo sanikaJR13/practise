@@ -9,7 +9,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import get_object_or_404
 
 from .models import WorkflowRun
-from .bhulekh.models import PropertyInput, LocationOption, CaptchaPayload
+from .bhulekh.models import PropertyInput, LocationOption, CaptchaPayload, SurveyOption
 from .bhulekh.workflow import BhulekhWorkflow
 from .bhulekh.exceptions import (
     CaptchaExpiredError,
@@ -54,6 +54,12 @@ def capture_bhulekh_session_state(workflow: BhulekhWorkflow) -> dict:
             {"value": opt.value, "text": opt.text, "selected": opt.selected}
             for opt in workflow.state.language_options
         ],
+        "survey_options": [
+            {"value": opt.value, "text": opt.text, "selected": opt.selected}
+            for opt in workflow.state.survey_options
+        ],
+        "full_html": workflow.state.full_html,
+        "html_fragments": dict(workflow.state.html_fragments or {}),
         "captcha": captcha_data,
     }
 
@@ -102,6 +108,12 @@ def restore_bhulekh_workflow(run: WorkflowRun) -> BhulekhWorkflow:
         LocationOption(value=opt["value"], text=opt["text"], selected=opt.get("selected", False))
         for opt in session_state.get("language_options", [])
     ]
+    workflow.state.survey_options = [
+        SurveyOption(value=opt["value"], text=opt["text"], selected=opt.get("selected", False))
+        for opt in session_state.get("survey_options", [])
+    ]
+    workflow.state.full_html = session_state.get("full_html")
+    workflow.state.html_fragments = dict(session_state.get("html_fragments") or {})
     
     captcha_payload = session_state.get("captcha")
     if captcha_payload:
@@ -225,8 +237,8 @@ def start_workflow(request):
         district = req["district"]
         taluka = req["taluka"]
         village = req["village"]
-        survey_number = req["survey_number"]
         survey_number_part1 = req.get("survey_number_part1")
+        survey_number = req.get("survey_number") or survey_number_part1
         mobile = req.get("mobile")
         language = req.get("language", "en_us")
     except Exception as e:
