@@ -118,94 +118,56 @@ def restore_bhulekh_workflow(run: WorkflowRun) -> BhulekhWorkflow:
         
     return workflow
 
-# In-memory caches for locations and surveys
-LOCATIONS_CACHE = {
-    "districts": [],     # list of dicts: [{"label": "...", "value": "..."}]
-    "talukas": {},       # key: district_value, value: list of dicts
-    "villages": {}       # key: f"{district_value}_{taluka_value}", value: list of dicts
-}
 
+# In-memory caches for locations and surveys
+LOCATIONS_DATA_FILE = Path(__file__).parent / "locations_data.json"
 SURVEYS_CACHE = {}      # key: f"{district_value}_{taluka_value}_{village_value}_{survey_number_part1}", value: list of dicts
+
+def load_static_locations():
+    if LOCATIONS_DATA_FILE.exists():
+        try:
+            with open(LOCATIONS_DATA_FILE, "r", encoding="utf-8") as f:
+                return json.load(f)
+        except Exception as e:
+            print(f"Failed to load static locations JSON: {e}")
+    return {"districts": [], "talukas": {}, "villages": {}}
 
 # API Views
 
 def get_locations(request):
-    """Fetch locations live from Bhulekh or fall back to cached data."""
+    """Fetch locations from locally stored static data."""
     district_value = request.GET.get("district_value")
     taluka_value = request.GET.get("taluka_value")
-    try:
-        # Load districts from cache or fetch live
-        districts = LOCATIONS_CACHE["districts"]
-        if not districts:
-            prop_in = PropertyInput(
-                district="interactive", 
-                taluka="interactive",
-                village="interactive",
-                survey_number="1"
-            )
-            wf = BhulekhWorkflow(property_input=prop_in, artifact_root=str(STORAGE_ROOT))
-            wf.load_home()
-            districts = [{"label": opt.text, "value": opt.value} for opt in wf.state.district_options]
-            LOCATIONS_CACHE["districts"] = districts
+    
+    data = load_static_locations()
+    districts = data.get("districts") or []
+    
+    talukas = []
+    if district_value:
+        talukas = data.get("talukas", {}).get(district_value) or []
         
-        talukas = []
-        if district_value:
-            talukas = LOCATIONS_CACHE["talukas"].get(district_value)
-            if not talukas:
-                prop_in = PropertyInput(
-                    district=district_value, 
-                    taluka="interactive",
-                    village="interactive",
-                    survey_number="1"
-                )
-                wf = BhulekhWorkflow(property_input=prop_in, artifact_root=str(STORAGE_ROOT))
-                wf.load_home()
-                wf.select_district(district_value)
-                talukas = [{"label": opt.text, "value": opt.value} for opt in wf.state.taluka_options]
-                LOCATIONS_CACHE["talukas"][district_value] = talukas
-            
-        villages = []
-        if district_value and taluka_value:
-            cache_key = f"{district_value}_{taluka_value}"
-            villages = LOCATIONS_CACHE["villages"].get(cache_key)
-            if not villages:
-                prop_in = PropertyInput(
-                    district=district_value, 
-                    taluka=taluka_value,
-                    village="interactive",
-                    survey_number="1"
-                )
-                wf = BhulekhWorkflow(property_input=prop_in, artifact_root=str(STORAGE_ROOT))
-                wf.load_home()
-                wf.select_district(district_value)
-                wf.select_taluka(taluka_value)
-                villages = [{"label": opt.text, "value": opt.value} for opt in wf.state.village_options]
-                LOCATIONS_CACHE["villages"][cache_key] = villages
-            
-        return JsonResponse({
-            "districts": districts,
-            "talukas": talukas,
-            "villages": villages
-        })
-    except Exception as exc:
-        print(f"Live locations fetch failed: {exc}, falling back to static Pune options.")
-        # Static mock options for testing:
-        dist_options = [{"label": "Pune", "value": "27"}]
-        tal_options = []
-        vil_options = []
+    villages = []
+    if district_value and taluka_value:
+        cache_key = f"{district_value}_{taluka_value}"
+        villages = data.get("villages", {}).get(cache_key) or []
+        
+    # If the JSON file doesn't exist or is empty, we fall back to static Pune options
+    if not districts:
+        districts = [{"label": "Pune", "value": "27"}]
         if district_value == "27":
-            tal_options = [{"label": "Haveli", "value": "1"}]
+            talukas = [{"label": "Haveli", "value": "1"}]
             if taluka_value == "1":
-                vil_options = [
+                villages = [
                     {"label": "Aundh", "value": "2701001"},
                     {"label": "Baner", "value": "2701002"},
                     {"label": "Balewadi", "value": "2701003"}
                 ]
-        return JsonResponse({
-            "districts": dist_options,
-            "talukas": tal_options,
-            "villages": vil_options
-        })
+                
+    return JsonResponse({
+        "districts": districts,
+        "talukas": talukas,
+        "villages": villages
+    })
 
 def get_surveys(request):
     """Fetch survey options live from Bhulekh matching a search prefix, or fall back to mock subdivisions."""
@@ -288,6 +250,7 @@ def start_workflow(request):
         return JsonResponse({"detail": f"Invalid property input: {str(e)}"}, status=400)
 
     # Create new WorkflowRun record
+    # Create new WorkflowRun record
     db_run = WorkflowRun.objects.create(
         run_id=run_id,
         district=district,
@@ -312,9 +275,6 @@ def start_workflow(request):
         workflow.select_taluka()
         workflow.select_village()
         workflow.search_survey()
-        workflow.select_survey()
-        workflow.set_mobile()
-        workflow.set_language()
         
         captcha = workflow.fetch_captcha()
         
@@ -324,11 +284,15 @@ def start_workflow(request):
         db_run.status = "captcha_required"
         db_run.save()
         
+        # Extract matching survey options to send to frontend
+        survey_opts = [{"label": opt.text, "value": opt.value} for opt in workflow.state.survey_options]
+        
         return JsonResponse({
             "run_id": run_id,
             "status": "captcha_required",
             "captcha_image_base64": captcha.image_base64,
-            "mime_type": captcha.mime_type
+            "mime_type": captcha.mime_type,
+            "survey_options": survey_opts
         })
     except Exception as e:
         db_run.status = "failed"
@@ -345,10 +309,15 @@ def submit_captcha(request):
         req = json.loads(request.body.decode("utf-8"))
         run_id = req["run_id"]
         captcha_text = req["captcha_text"]
+        survey_number = req["survey_number"]  # The exact survey option selected by the user
     except Exception as e:
         return JsonResponse({"detail": f"Invalid JSON body: {str(e)}"}, status=400)
 
     db_run = get_object_or_404(WorkflowRun, run_id=run_id)
+    
+    # Update the final selected survey number in db_run so restore_bhulekh_workflow uses it
+    db_run.survey_number = survey_number
+    db_run.save()
     
     try:
         workflow = restore_bhulekh_workflow(db_run)
@@ -356,6 +325,17 @@ def submit_captcha(request):
         return JsonResponse({"detail": f"Failed to restore workflow session: {str(e)}"}, status=400)
 
     try:
+        # Override step to survey_searched to allow transition
+        workflow.state.step = "survey_searched"
+        
+        # Execute remaining steps
+        workflow.select_survey(survey_number)
+        workflow.set_mobile(db_run.mobile)
+        workflow.set_language(db_run.language)
+        
+        # Set step to captcha_ready to satisfy submit requirement
+        workflow.state.step = "captcha_ready"
+        
         # Submit captcha and execute extraction
         result = workflow.submit_captcha_and_run(captcha_text)
         result_dict = result.to_dict()
@@ -374,6 +354,12 @@ def submit_captcha(request):
         # CAPTCHA failed, reload a new one
         try:
             workflow.state.captcha_attempt_count += 1
+            
+            # Re-fetch captcha
+            workflow.state.step = "survey_searched"
+            workflow.select_survey(survey_number)
+            workflow.set_mobile(db_run.mobile)
+            workflow.set_language(db_run.language)
             new_captcha = workflow.fetch_captcha()
             
             session_state = capture_bhulekh_session_state(workflow)

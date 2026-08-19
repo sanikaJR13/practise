@@ -317,8 +317,12 @@ class BhulekhWorkflow:
         return self.state
 
     def fetch_captcha(self):
-        self._require_step("language_set")
-        self._ensure_language_consistency()
+        if self.state.step == "survey_searched":
+            pass
+        else:
+            self._require_step("language_set")
+            self._ensure_language_consistency()
+
         captcha = self.captcha_manager.extract_from_html(
             self.form.current_html(),
             refreshed_count=self.state.captcha_refresh_count,
