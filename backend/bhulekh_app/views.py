@@ -118,6 +118,15 @@ def restore_bhulekh_workflow(run: WorkflowRun) -> BhulekhWorkflow:
         
     return workflow
 
+# In-memory caches for locations and surveys
+LOCATIONS_CACHE = {
+    "districts": [],     # list of dicts: [{"label": "...", "value": "..."}]
+    "talukas": {},       # key: district_value, value: list of dicts
+    "villages": {}       # key: f"{district_value}_{taluka_value}", value: list of dicts
+}
+
+SURVEYS_CACHE = {}      # key: f"{district_value}_{taluka_value}_{village_value}_{survey_number_part1}", value: list of dicts
+
 # API Views
 
 def get_locations(request):
@@ -125,27 +134,53 @@ def get_locations(request):
     district_value = request.GET.get("district_value")
     taluka_value = request.GET.get("taluka_value")
     try:
-        prop_in = PropertyInput(
-            district=district_value or "interactive", 
-            taluka=taluka_value or "interactive",
-            village="interactive",
-            survey_number="1"
-        )
-        wf = BhulekhWorkflow(property_input=prop_in, artifact_root=str(STORAGE_ROOT))
-        wf.load_home()
-        
-        districts = [{"label": opt.text, "value": opt.value} for opt in wf.state.district_options]
+        # Load districts from cache or fetch live
+        districts = LOCATIONS_CACHE["districts"]
+        if not districts:
+            prop_in = PropertyInput(
+                district="interactive", 
+                taluka="interactive",
+                village="interactive",
+                survey_number="1"
+            )
+            wf = BhulekhWorkflow(property_input=prop_in, artifact_root=str(STORAGE_ROOT))
+            wf.load_home()
+            districts = [{"label": opt.text, "value": opt.value} for opt in wf.state.district_options]
+            LOCATIONS_CACHE["districts"] = districts
         
         talukas = []
         if district_value:
-            wf.select_district(district_value)
-            talukas = [{"label": opt.text, "value": opt.value} for opt in wf.state.taluka_options]
+            talukas = LOCATIONS_CACHE["talukas"].get(district_value)
+            if not talukas:
+                prop_in = PropertyInput(
+                    district=district_value, 
+                    taluka="interactive",
+                    village="interactive",
+                    survey_number="1"
+                )
+                wf = BhulekhWorkflow(property_input=prop_in, artifact_root=str(STORAGE_ROOT))
+                wf.load_home()
+                wf.select_district(district_value)
+                talukas = [{"label": opt.text, "value": opt.value} for opt in wf.state.taluka_options]
+                LOCATIONS_CACHE["talukas"][district_value] = talukas
             
         villages = []
         if district_value and taluka_value:
-            wf.select_district(district_value)
-            wf.select_taluka(taluka_value)
-            villages = [{"label": opt.text, "value": opt.value} for opt in wf.state.village_options]
+            cache_key = f"{district_value}_{taluka_value}"
+            villages = LOCATIONS_CACHE["villages"].get(cache_key)
+            if not villages:
+                prop_in = PropertyInput(
+                    district=district_value, 
+                    taluka=taluka_value,
+                    village="interactive",
+                    survey_number="1"
+                )
+                wf = BhulekhWorkflow(property_input=prop_in, artifact_root=str(STORAGE_ROOT))
+                wf.load_home()
+                wf.select_district(district_value)
+                wf.select_taluka(taluka_value)
+                villages = [{"label": opt.text, "value": opt.value} for opt in wf.state.village_options]
+                LOCATIONS_CACHE["villages"][cache_key] = villages
             
         return JsonResponse({
             "districts": districts,
@@ -182,6 +217,10 @@ def get_surveys(request):
     if not (district_value and taluka_value and village_value and survey_number_part1):
         return JsonResponse({"detail": "Missing required parameters"}, status=400)
 
+    cache_key = f"{district_value}_{taluka_value}_{village_value}_{survey_number_part1}"
+    if cache_key in SURVEYS_CACHE:
+        return JsonResponse({"surveys": SURVEYS_CACHE[cache_key]})
+
     try:
         prop_in = PropertyInput(
             district=district_value,
@@ -200,6 +239,7 @@ def get_surveys(request):
         wf.search_survey()
         
         options = [{"label": opt.text, "value": opt.value} for opt in wf.state.survey_options]
+        SURVEYS_CACHE[cache_key] = options
         return JsonResponse({"surveys": options})
     except Exception as exc:
         print(f"Live surveys fetch failed: {exc}, falling back to mock options.")
