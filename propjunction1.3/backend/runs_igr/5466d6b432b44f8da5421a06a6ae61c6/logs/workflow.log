@@ -1,0 +1,4 @@
+2026-08-21 14:57:20,174 INFO [run_id=5466d6b432b44f8da5421a06a6ae61c6] [step=initialized] Sending GET request to https://freesearchigrservice.maharashtra.gov.in/
+2026-08-21 14:57:20,628 INFO [run_id=5466d6b432b44f8da5421a06a6ae61c6] [step=initialized] Received HTTP 200 with content-type text/html; charset=utf-8
+2026-08-21 14:57:21,059 INFO [run_id=5466d6b432b44f8da5421a06a6ae61c6] [step=initialized] Sending POST request to https://freesearchigrservice.maharashtra.gov.in/
+2026-08-21 14:57:21,128 INFO [run_id=5466d6b432b44f8da5421a06a6ae61c6] [step=initialized] Received HTTP 200 with content-type text/html; charset=utf-8

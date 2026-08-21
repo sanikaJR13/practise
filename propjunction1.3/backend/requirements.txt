@@ -1,0 +1,24 @@
+# Core Django
+django==5.0.2
+django-cors-headers==4.3.1
+djangorestframework>=3.15.0
+
+# HTTP & Scraping
+requests==2.31.0
+beautifulsoup4==4.12.3
+
+# Image & PDF
+pillow==12.3.0
+reportlab==4.1.0
+img2pdf==0.5.1
+
+# OCR (for IGR CAPTCHA auto-solving)
+pytesseract>=0.3.10
+
+# Production dependencies
+gunicorn==21.2.0
+whitenoise==6.6.0
+dj-database-url==2.1.0
+
+# Database
+psycopg2-binary>=2.9.9

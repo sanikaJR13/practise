@@ -1,0 +1,75 @@
+{
+  "run_id": "1d72c3b109284c34b80d578fb1d2fbe9",
+  "status": "running",
+  "step": "home_loaded",
+  "latest_stable_step": "home_loaded",
+  "selected_labels": {
+    "language": "Marathi"
+  },
+  "selected_district": null,
+  "selected_taluka": null,
+  "selected_village": null,
+  "selected_survey": null,
+  "mobile": null,
+  "language": "mr_in",
+  "cookies": {
+    "ASP.NET_SessionId": "uz3syy1ndbxrlsle22ljcwsn",
+    "SRVNAME": "App4"
+  },
+  "captcha_attempt_count": 0,
+  "captcha_refresh_count": 0,
+  "mobile_retry_count": 0,
+  "submit_attempt_count": 0,
+  "dropdown_retry_counts": {},
+  "parsed_record_path": null,
+  "final_pdf_path": null,
+  "result_classification": null,
+  "pdf_generation": null,
+  "created_at": "2026-08-21T09:13:05.848156+00:00",
+  "updated_at": "2026-08-21T09:13:10.981971+00:00",
+  "metadata": {
+    "workflow_initialized": {
+      "district": "interactive",
+      "taluka": "interactive",
+      "village": "interactive",
+      "survey_number": "1",
+      "survey_number_part1": "1",
+      "mobile": null,
+      "language": "mr_in",
+      "record_type": "SelectSatbara",
+      "search_type_radio": "17",
+      "search_type_dropdown": "2",
+      "rbtn_ulpin": "Know-no",
+      "auto_generate_mobile": true,
+      "max_mobile_retries": 3,
+      "max_captcha_attempts": 10,
+      "max_dropdown_refresh_attempts": 1,
+      "language_fallback_to_first": true,
+      "metadata": {}
+    },
+    "home_loaded": {
+      "cookies": {
+        "ASP.NET_SessionId": "uz3syy1ndbxrlsle22ljcwsn",
+        "SRVNAME": "App4"
+      },
+      "attempt": 1
+    }
+  },
+  "artifacts": {
+    "run_dir": "storage\\1d72c3b109284c34b80d578fb1d2fbe9",
+    "files": {
+      "metadata": [
+        "storage\\1d72c3b109284c34b80d578fb1d2fbe9\\workflow_state.json"
+      ],
+      "requests": [
+        "storage\\1d72c3b109284c34b80d578fb1d2fbe9\\requests\\load_home.request.json"
+      ],
+      "responses": [
+        "storage\\1d72c3b109284c34b80d578fb1d2fbe9\\responses\\load_home.response.txt"
+      ],
+      "results": [
+        "storage\\1d72c3b109284c34b80d578fb1d2fbe9\\results\\homepage.html"
+      ]
+    }
+  }
+}

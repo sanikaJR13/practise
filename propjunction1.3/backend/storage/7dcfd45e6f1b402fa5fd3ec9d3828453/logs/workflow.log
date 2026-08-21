@@ -1,0 +1,2 @@
+2026-08-21 15:15:51,619 INFO [run_id=7dcfd45e6f1b402fa5fd3ec9d3828453] [step=load_home] Sending GET request to https://bhulekh.mahabhumi.gov.in/
+2026-08-21 15:15:56,486 INFO [run_id=7dcfd45e6f1b402fa5fd3ec9d3828453] [step=load_home] Received HTTP 200 with content-type text/html; charset=utf-8

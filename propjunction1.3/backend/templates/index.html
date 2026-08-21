@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PropJunction - Combined Scraper Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --card-hover: #334155;
+            --accent-712: #6366f1;
+            --accent-8a: #06b6d4;
+            --accent-igr: #f59e0b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --border: #334155;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--accent-712), var(--accent-8a), var(--accent-igr));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 48px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            max-width: 1100px;
+            width: 100%;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 32px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .card:hover {
+            background: var(--card-hover);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+        }
+
+        .card-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .card-712 .card-icon { background: rgba(99,102,241,0.15); color: var(--accent-712); }
+        .card-8a .card-icon  { background: rgba(6,182,212,0.15);  color: var(--accent-8a); }
+        .card-igr .card-icon { background: rgba(245,158,11,0.15); color: var(--accent-igr); }
+
+        .card h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .card-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .card-712 .card-tag { background: rgba(99,102,241,0.15); color: var(--accent-712); }
+        .card-8a .card-tag  { background: rgba(6,182,212,0.15);  color: var(--accent-8a); }
+        .card-igr .card-tag { background: rgba(245,158,11,0.15); color: var(--accent-igr); }
+
+        .api-section {
+            max-width: 1100px;
+            width: 100%;
+            margin-top: 48px;
+        }
+
+        .api-section h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .endpoint-list {
+            display: grid;
+            gap: 8px;
+        }
+
+        .endpoint {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--card-bg);
+            padding: 12px 16px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            border: 1px solid var(--border);
+        }
+
+        .method {
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+        }
+
+        .method-get  { background: rgba(34,197,94,0.15); color: #22c55e; }
+        .method-post { background: rgba(59,130,246,0.15); color: #3b82f6; }
+
+        .endpoint code {
+            color: var(--text-primary);
+            font-family: monospace;
+        }
+
+        .endpoint .desc {
+            color: var(--text-secondary);
+            margin-left: auto;
+        }
+
+        .status-bar {
+            max-width: 1100px;
+            width: 100%;
+            margin-top: 48px;
+            padding: 16px 24px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #22c55e;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .status-text {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .status-text span {
+            color: #22c55e;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <h1>PropJunction Dashboard</h1>
+    <p class="subtitle">Unified Maharashtra Land Record Extraction System</p>
+
+    <div class="grid">
+        <a class="card card-712" href="http://localhost:5174" target="_blank">
+            <div class="card-icon">7/12</div>
+            <h2>7/12 Utara (सातबारा)</h2>
+            <p>Extract Village Form XII land records from MahaBhulekh portal. Get ownership details, area assessment, crop records, and generate PDF documents.</p>
+            <span class="card-tag">bhulekh.mahabhumi.gov.in</span>
+        </a>
+
+        <a class="card card-8a" href="http://localhost:5175" target="_blank">
+            <div class="card-icon">8A</div>
+            <h2>8A Khata Extract (आठ-अ)</h2>
+            <p>Extract Village Form VIII-A Khata records from MahaBhulekh portal. Get khata holder details, land holdings, survey parcels, and assessment data.</p>
+            <span class="card-tag">bhulekh.mahabhumi.gov.in</span>
+        </a>
+
+        <a class="card card-igr" href="http://localhost:5176" target="_blank">
+            <div class="card-icon">IGR</div>
+            <h2>IGR History Forensics</h2>
+            <p>Multi-year property registration history from IGR Free Search. Ownership timeline, transaction forensics, legal insights, and evidence analysis.</p>
+            <span class="card-tag">freesearchigrservice.maharashtra.gov.in</span>
+        </a>
+    </div>
+
+    <div class="api-section">
+        <h3>API Endpoints</h3>
+        <div class="endpoint-list">
+            <div class="endpoint">
+                <span class="method method-get">GET</span>
+                <code>/api/712/locations/options</code>
+                <span class="desc">Fetch districts, talukas, villages for 7/12</span>
+            </div>
+            <div class="endpoint">
+                <span class="method method-post">POST</span>
+                <code>/api/712/workflows/start</code>
+                <span class="desc">Start 7/12 scraping workflow</span>
+            </div>
+            <div class="endpoint">
+                <span class="method method-get">GET</span>
+                <code>/api/8a/locations/options</code>
+                <span class="desc">Fetch districts, talukas, villages for 8A</span>
+            </div>
+            <div class="endpoint">
+                <span class="method method-post">POST</span>
+                <code>/api/8a/workflows/start</code>
+                <span class="desc">Start 8A Khata scraping workflow</span>
+            </div>
+            <div class="endpoint">
+                <span class="method method-get">GET</span>
+                <code>/api/igr/api/v1/locations/districts/</code>
+                <span class="desc">Fetch IGR districts</span>
+            </div>
+            <div class="endpoint">
+                <span class="method method-post">POST</span>
+                <code>/api/igr/api/v1/workflows/start_workflow/</code>
+                <span class="desc">Start IGR multi-year scraping</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="status-bar">
+        <div class="status-dot"></div>
+        <div class="status-text">
+            Server is <span>running</span> on port 8000 &mdash; All 3 scrapers active
+        </div>
+    </div>
+</body>
+</html>

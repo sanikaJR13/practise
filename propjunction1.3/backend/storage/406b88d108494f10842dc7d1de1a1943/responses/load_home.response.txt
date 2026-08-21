@@ -1,0 +1,1122 @@
+
+
+<!DOCTYPE html>
+
+<html>
+<head><title>
+	Mahabhulekh v2.0
+</title><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="google" content="notranslate" />
+
+    <script>
+        document.documentElement.setAttribute("translate", "no");
+    </script>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css" /><link rel="stylesheet" href="css/base.css" /><link rel="stylesheet" href="css/base-responsive.css" /><link rel="stylesheet" href="css/animate.min.css" /><link rel="stylesheet" href="css/slicknav.min.css" /><link rel="stylesheet" href="css/style.css" /><link rel="stylesheet" href="css/font-awesome.min.css" /><link href="css/animate.min.css" rel="stylesheet" type="text/css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.1/css/font-awesome.css" integrity="sha512-LKG0Zi6duJ5mwncLtQVchN0iF8fWmcxApuX9pqGq7ITgwQDWR9EqZFsrV9TXfE9pPRa1J6GVnsBl7gKxAyllaA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <script src="js/popper.min.js"></script>
+    
+    <meta name="google" content="notranslate">
+
+    <!-- Bootstrap CSS -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet" />
+
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<!-- Bootstrap JS -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            height: 100%;
+            width: 100%;
+            background-color: Black;
+            filter: blur();
+            opacity: 0.8;
+            /*border-radius: 10px 10px 10px 10px;*/
+        }
+
+        .showPC {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            border: 1px solid #ccc;
+            padding: 20px;
+            z-index: 1000;
+            width: 100%;
+            display: block;
+            height: 100%;
+            object-fit: cover;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            max-height: 100vh; /*Set maximum height; */
+            overflow-y: auto; /*Enable vertical scroll when content overflows*/
+        }
+
+        .show8a {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            border: 1px solid #ccc;
+            padding: 20px;
+            z-index: 1000;
+            width: 100%;
+            display: block;
+            height: 100%;
+            object-fit: cover;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            max-height: 100vh; /*Set maximum height*/
+            overflow-y: auto; /* Enable vertical scroll when content overflows */
+        }
+
+        .report {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            border: 1px solid #ccc;
+            padding: 20px;
+            z-index: 1000;
+            width: 100%;
+            display: block;
+            height: 100%;
+            object-fit: cover;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            max-height: 100vh; /* Set maximum height */
+            overflow-y: auto; /* Enable vertical scroll when content overflows */
+            color: black; /* Set text color to black */
+        }
+
+
+
+        .showPC #btnClosePopup {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            color: white;
+            font-size: 12px;
+            padding: 5px 8px;
+            border: none;
+            cursor: pointer;
+            background-color: red;
+        }
+
+        .showPC #ImgPC {
+            display: block;
+            margin: 0 auto;
+        }
+
+        .blur-overlay {
+            position: fixed;
+            top: 0;
+            left: 100;
+            /* width: 100%;*/
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Adjust opacity as needed */
+            z-index: 999; /* Should be lower than .showPC z-index */
+        }
+
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: red; /* Set your desired background color */
+            color: white; /* Set your desired text color */
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            font-size: 18px;
+            line-height: 1;
+            cursor: pointer;
+        }
+
+            .close-button:hover {
+                background-color: darkred; /* Change the background color on hover */
+            }
+    </style>
+
+    <style type="text/css" media="screen">
+        #background {
+            position: fixed;
+            z-index: -1;
+            top: 25%;
+            left: 25%;
+            opacity: 0.4;
+        }
+
+        .auto-style1 {
+            width: 13%;
+        }
+
+        .auto-style3 {
+            width: 9%;
+        }
+
+        .auto-style4 {
+            width: 9%;
+            text-align: center;
+        }
+
+        .auto-style5 {
+            width: 40%;
+        }
+
+        .auto-style6 {
+            width: 40%;
+            text-align: center;
+        }
+
+        #tblCapcha td {
+            padding: 8px;
+        }
+
+        #CapchaImg img {
+            position: inherit;
+            z-index: -2;
+            opacity: 0.7;
+            margin-top: 0px;
+        }
+
+        #background, #background1 {
+            display: block;
+            position: fixed;
+            z-index: -1;
+            opacity: 0.4;
+            top: 25%;
+            left: 25%;
+        }
+
+        .report-page {
+            border: 1px solid black;
+        }
+
+            .report-page table {
+                width: 100%;
+                text-align: center;
+            }
+
+        #imageContainer {
+            max-width: 100%;
+            max-height: 100%;
+        }
+    </style>
+
+    <script type="text/javascript">
+        function validateMobileNumber() {
+            var mobileNumber = document.getElementById('ContentPlaceHolder1_txtmobile').value;
+            var mobileNumber = document.getElementById('ContentPlaceHolder1_txtmobile1').value;
+            var mobileNumber = document.getElementById('ContentPlaceHolder1_txtmobileno').value;
+
+            var pattern = /^[6-9][0-9]{9}$/;
+
+            if (pattern.test(mobileNumber)) {
+                return true;
+            } else {
+                alert("Please enter a valid mobile number!");
+                return false;
+            }
+        }
+    </script>
+
+    
+
+    <script type="text/javascript">
+
+
+        function clearValuesOnULPIN() {
+            var txtUlpin = document.getElementById('ContentPlaceHolder1_txtUlpin');
+            var txtmobile = document.getElementById('ContentPlaceHolder1_txtmobile');
+            var txtcaptcha1 = document.getElementById('ContentPlaceHolder1_txtcaptcha1');
+            var ddllang = document.getElementById('ContentPlaceHolder1_ddllang');
+
+            if (txtUlpin.value.trim() !== '') {
+                txtmobile.value = '';
+                txtcaptcha1.value = '';
+
+                ddllang.selectedIndex = 1;
+            }
+        }
+
+        function clearValueskprat() {
+            var txtMojaniKr = document.getElementById('ContentPlaceHolder1_txtMojaniKr');
+            var txtmobileno = document.getElementById('ContentPlaceHolder1_txtmobileno');
+            var txtcaptchakprat = document.getElementById('ContentPlaceHolder1_txtcaptchakprat');
+            var ddlkpratlang = document.getElementById('ContentPlaceHolder1_ddlkpratlang');
+
+            if (txtMojaniKr.value.trim() !== '') {
+
+                txtmobileno.value = '';
+                txtcaptchakprat.value = '';
+
+                ddlkpratlang.selectedIndex = 1;
+            }
+        }
+
+        function clearOtherFields() {
+            var txtUlpin = document.getElementById('ContentPlaceHolder1_txtUlpin');
+            var txtmobile = document.getElementById('ContentPlaceHolder1_txtmobile');
+            var txtcaptcha1 = document.getElementById('ContentPlaceHolder1_txtcaptcha1');
+            var txtmobile1 = document.getElementById('ContentPlaceHolder1_txtmobile1');
+            var txtcaptcha = document.getElementById('ContentPlaceHolder1_txtcaptcha');
+            var txtmobileno = document.getElementById('ContentPlaceHolder1_txtmobileno');
+            var txtcaptchakprat = document.getEleme ntById('ContentPlaceHolder1_txtcaptchakprat');
+            var ddllang = document.getElementById('ContentPlaceHolder1_ddllang');
+            var ddllangforAll = document.getElementById('ContentPlaceHolder1_ddllangforAll');
+            var ddlkpratlang = document.getElementById('ContentPlaceHolder1_ddlkpratlang');
+
+
+            if (ddllang.value !== '') {
+                txtcaptcha1.value = '';
+            }
+
+            if (ddllangforAll.value !== '') {
+                txtcaptcha.value = '';
+            }
+
+            if (ddlkpratlang.value !== '') {
+                txtcaptchakprat.value = '';
+            }
+            if (txtmobile1.value.trim() !== '') {
+                txtcaptcha.value = '';
+            }
+        }
+
+        function clearCaptchaOnMobileChange() {
+            var txtmobile = document.getElementById('ContentPlaceHolder1_txtmobile');
+            var txtcaptcha1 = document.getElementById('ContentPlaceHolder1_txtcaptcha1');
+            var ddllang = document.getElementById('ContentPlaceHolder1_ddllang');
+            if (txtmobile.value.trim() !== '') {
+                txtcaptcha1.value = '';
+                ddllang.selectedIndex = 1;
+            }
+        }
+
+        function clearCaptchaOnMobile1Change() {
+            var txtmobile1 = document.getElementById('ContentPlaceHolder1_txtmobile1');
+            var txtcaptcha = document.getElementById('ContentPlaceHolder1_txtcaptcha');
+
+            if (txtmobile1.value.trim() !== '') {
+                txtcaptcha.value = '';
+            }
+        }
+
+        function clearCaptchaOnMobilekChange() {
+            var txtmobileno = document.getElementById('ContentPlaceHolder1_txtmobileno');
+            var txtcaptchakprat = document.getElementById('ContentPlaceHolder1_txtcaptchakprat');
+
+            if (txtmobileno.value.trim() !== '') {
+                txtcaptchakprat.value = '';
+            }
+        }
+    </script>
+
+    <script type="text/javascript">
+        function clearCapchakpratOnLangChange() {
+            var ddlkpratlang = document.getElementById('ContentPlaceHolder1_ddlkpratlang');
+            var txtcaptchakprat = document.getElementById('ContentPlaceHolder1_txtcaptchakprat');
+
+            if (ddlkpratlang.value !== '') {
+                txtcaptchakprat.value = '';
+            }
+        }
+
+        function clearCapchakpratOnLangChangeforall() {
+            var ddllangforAll = document.getElementById('ContentPlaceHolder1_ddllangforAll');
+            var txtcaptcha = document.getElementById('ContentPlaceHolder1_txtcaptcha');
+
+            if (ddllangforAll.value !== '') {
+                txtcaptcha.value = '';
+            }
+        }
+    </script>
+
+    <script>
+        function restrictToNumeric(event) {
+            var charCode = event.which ? event.which : event.keyCode;
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                event.preventDefault();
+            }
+
+
+        }
+        function restrictToChar(event) {
+            var charCode = event.which ? event.which : event.keyCode;
+            if ((charCode >= 65 && charCode <= 90) || (charCode >= 97 && charCode <= 122) || (charCode === 46) || (charCode === 32)) {
+
+                return charCode;
+            }
+            else {
+                event.preventDefault();
+            }
+        }
+
+    </script>
+
+    <script type="text/javascript">
+        function preventSave(event) {
+            if (event.ctrlKey && (event.key === 's' || event.key === 'S')) {
+                event.preventDefault();
+            }
+        }
+        document.addEventListener('keydown', preventSave);
+    </script>
+
+    <script type="text/javascript">
+        function preventSave(event) {
+            if (event.altKey && (event.key === 'f' || event.key === 'F')) {
+                event.preventDefault();
+            }
+        }
+        document.addEventListener('keydown', preventSave);
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Disable Google Chrome's auto-translate prompt
+            const meta = document.createElement('meta');
+            meta.setAttribute('name', 'google');
+            meta.setAttribute('content', 'notranslate');
+            document.head.appendChild(meta);
+        });
+    </script>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const el = document.getElementById("ContentPlaceHolder1_lbldist");
+        if (!el) return;
+
+        // Get the original Marathi text from attribute
+        const originalText = (el.getAttribute("data-original") || "").trim();
+        if (!originalText) return;
+
+        let alertShown = false;
+
+        // Function to handle detected translation change
+        function handleChange() {
+            if (alertShown) return;
+            alertShown = true;
+            alert("सूचना -: भूलेख संकेतस्थळ फक्त मराठीत उपलब्ध असून English साठी Google Transliteration चा वापर अपेक्षित नाही.");
+            // After user clicks OK -> reload the page
+            location.reload();
+        }
+
+        // Observe for text changes (Google Translate modifies text)
+        const observer = new MutationObserver(() => {
+            const currentText = el.innerText.trim();
+            if (currentText !== originalText) {
+                handleChange();
+                observer.disconnect();
+            }
+        });
+
+        observer.observe(el, { childList: true, characterData: true, subtree: true });
+
+        // Fallback interval (if MutationObserver fails)
+        setInterval(() => {
+            const currentText = el.innerText.trim();
+            if (currentText !== originalText && !alertShown) {
+                handleChange();
+            }
+        }, 1500);
+    });
+</script>
+
+    
+
+    
+
+    <style>
+       /* DR DRILL POPUP ONLY */
+        .dr-popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 99999;
+        }
+
+        .dr-popup-box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+    
+            width: 500px;
+            max-width: 90%;
+    
+            background: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.5);
+            text-align: center;
+        }
+
+        .dr-popup-box img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .dr-close-btn {
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            cursor: pointer;
+            color: red;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .dr-btn {
+            background-color: gray;
+            color: white;
+            padding: 6px 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .dr-btn:hover {
+            background-color: #555;
+        }
+    </style>
+
+    
+
+    <script>
+        $(document).ready(function () {
+
+            var endDate = new Date("2026-04-05T23:59:00");
+            var now = new Date();
+
+            if (now < endDate) {
+                $('#drModal').modal({
+                    backdrop: 'static', // prevent click outside
+                    keyboard: false     // prevent ESC close
+                });
+
+                $('#drModal').modal('show');
+            }
+
+        });
+    </script>
+
+
+
+    <style>
+        .my-table tr:nth-child(2) {
+            margin-bottom: 20px;
+        }
+    </style>
+
+    <script>
+        (function (d) {
+            var s = d.createElement("script");
+            s.setAttribute("data-account", "gtwMEnfvIr");
+            s.src = "https://cdn.userway.org/widget.js";
+            s.async = true;
+            (d.body || d.head).appendChild(s);
+        })(document);
+    </script>
+</head>
+<body>
+    <div class="hed-back">
+        <!-- Header -->
+        <div class="container-fluid clearfix" id="b-header">
+            <div class="row">
+                <div class="col-md-12">
+                    <img src="image/dept-logo.png" class="img-hed mt-2" title="Revenue Department Logo" />
+                    
+
+                    
+                    <p class="hed-hedline">गाव नमुना नंबर ७/१२, ८अ, मालमत्ता पत्रक व क-प्रत पाहणे</p>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Global Navigation -->
+    <div class="globalnav-bg1">
+        <div class="container-fluid">
+            <marquee width="100%" class="pt-2" direction="left" height="40px">
+                <span id="lblmessage">MAHA Bhulekh (i.e. Maharashtra Bhumi Abhilekh) - a land record website of Maharashtra state (India) that provides  7/12 extract, 8A extract and Property Card online to citizens</span>
+            </marquee>
+        </div>          
+    </div>
+        <div>
+            <center>
+                 <span id="lbldailycount"></span>
+            </center>           
+        </div>
+
+    <form method="post" action="./" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTQ2MzYxMjg1OA8WAh4Ldmlld0NhcHRjaGEFBkt1Q2JuYRYCZg9kFgQCAw8PFgIeBFRleHQFsAFNQUhBIEJodWxla2ggKGkuZS4gTWFoYXJhc2h0cmEgQmh1bWkgQWJoaWxla2gpIC0gYSBsYW5kIHJlY29yZCB3ZWJzaXRlIG9mIE1haGFyYXNodHJhIHN0YXRlIChJbmRpYSkgdGhhdCBwcm92aWRlcyAgNy8xMiBleHRyYWN0LCA4QSBleHRyYWN0IGFuZCBQcm9wZXJ0eSBDYXJkIG9ubGluZSB0byBjaXRpemVuc2RkAgcPZBYGAgEPZBYKAgMPFgIeB1Zpc2libGVoZAIFDxYCHwJoZAIRDxBkZBYBAgFkAhMPZBYKAgUPDxYCHwFlZGQCCw8PFgIfAWVkZAIRDxBkZBYBZmQCFw8PFgIfAWVkZAIZDxYCHgNzcmMFjhZkYXRhOmltYWdlL3BuZztiYXNlNjQsaVZCT1J3MEtHZ29BQUFBTlNVaEVVZ0FBQUl3QUFBQW9DQVlBQUFBc1RSTEdBQUFBQVhOU1IwSUFyczRjNlFBQUFBUm5RVTFCQUFDeGp3djhZUVVBQUFBSmNFaFpjd0FBRHNNQUFBN0RBY2R2cUdRQUFBZk5TVVJCVkhoZXpabzlqaFZKRUlUbkRCd0FEd2tYRjJGaDR1SGhZU0JoNFlFUERzTEV3Y2ZnQkp5QUMzQUJMc0FGTUREZjd0ZE1QR0p5czM2Nyt1MkVsT3J1cXN6SXFLcnNxbjZqdVRwZDQ5MjdkOWQzZjVHMXpXS1VxK1h2L2RGM0pGZk5sNzRXVjI4dTkrdU5BU08rSllpanhEV1NZeXVZUGFLeTJONjJsWmpoTDhYMGNJM2trMis4Q3FYMm81RGxvYTBuLzNtSEFiMkNad2MyR3RmeW45VUJqaDdySHRSeTBuZUpjWmR3bzJCV0l4TzNWM0FKMlVTMmNxM1Vzb2ZyU0IycnVaY1hES1FyUk40V2pqMll5VDhhYzdSL3hKS0N5VVRzRlFiZ2lEd2p1VlpvY016dzllaS9CRmJsclJhTWtzU3JZNCtRbnRnOS9JNWVudEY4MFYvUDhib1hOUjd2eS94V2FRRE5IYVkzMlI1UnRkaFIzaG05clppc2YxU1hNSklYek9ZNUNydU9KQVp6MndaVVdwQWpkSzdnUEhyK012NWF6cGFlcmlNSlhHcGdzNE5wYWUxdG04RmVidmZWZmF2dC84TFZFU0pxbkxOOW95aHgwUzQ3Q2pYdWxYa3pyaG4ra1pqZHY1SldUZ0JZelZmQzNqeTErRm51UzJyU2N5bW0xSjRXVEMyeE1PT3ppcmVGRlJ6Q0hxNUxqYmNIdFR5OUd2RGJDbVpVOUJHRHZBMmN2ZjR6V284WW54QzVqeGkzZkxvL2VsZmlpQUdOb3BkenRWOHZ4TGVIZDZVbWNVMGZTU1VjTlZEYWVqbmRiNCtPR1NqZjNyeVhIa052anVxdnBOakhjK2IvOU9uVDA5WFYxV1laTWg3NVkyL2V2TG51S2FPVXV4ZS9mdjA2ZmZueTVZWlcyWXNYTDA1ZnYzN2QvREt0d3ZmdjM4OHgzSytHY3RVMFpHajFSK0JmaW1seG5WYzRjNndSTzFvRjQvang0OGZaRit2aEw2RTM5dE9uVDV1djUvWDh1bi8wNkZHVjAzMnpnc2xpYTN5ek9JSXpJdWJRYzN1Rk81QVZURFlvTHhiNjJWbEdCei9pejY1Q0VTaG5yNkV6eTlQYVlWcmFZai9QSStQcHhTck9UTzl3d2ZnZ2RlM1pZZUxPb21Nb2lnSlpXd3NsSGt3NTBjblI4L1BuejJ1UDAzWlBtL3ZkdTNkdks3YUlXc0VvZjZaakZaeTdsR2UwdlFmRUtqNWRZWFgySm1rVkREenF4M3ErV1VhUTZhUUlQS2UrVVFSaVBFNjdrYlJ5akVVb2h2NVN3VVNVMmkrSm1nYU55Vkh6SDk1aFFDU3NGWXgyRm1LNHpoUkxiUUFnNjJlWGtDWStkbnRBMFNnR2M1QkRPNHp1MWI0S3Q1WExNVlV3Z2tTVkNxWjBETFVnLyt3dEYrakRCdzF4Y3I1OSszYnVvM0JxaUxIdzhxdUphenlXNHBIRWNVYTgyakJpNCs3amtHNE00RXVNYzhESkdLSzJDUEsvZi8vK1B4cllLWmxyUDNwbmtPWGZWTGVFdFpBVlRGWXN2WG53eDdlbllEQW0zYm05TCs0dStNMk9Wd1ZEUE9OUkRobnR1aSs5SEdpVFh6dzJvMUVNRWRJZXY3dEtSdUdOUWpreUZIZVlXcEFnbjFnd2NXdlg1UFZ3QXNYRmd2SDRXREFPMXhQN29vYWFwc3hYdkRKMGFDZmlKU0czL0RKdTE0MnhHL2lpcW9qRWtlMFNYcmprSTY5QUc0VW0vdElPbTJtclFmN0Znb21vSmZBRjBzZWpuakY5VExaRXlrZHhzV0FjN3VjN0ROZW9wd2JGOVVCNXhGMks5ZnkrNFBoN3dUQXZhbmZvU01XeUhPSXYvWm9EZnN6RmwwWW82UWRaSDIzZEJWTURBOWpJL2hYbnhhSTJycVV0T29QaW1keE1PUENKTHhXTXg1WjRJcHduUW05MjVJNmdTT1NYSFlucTA3R1NRWDd4cGZIZE96dXlCTTBkZmw0d3ROVnlsdnFFcldCYVRoazh4dDhvR1pQQnhPSG5iYTFjN2g4bnl4RUx4dUY2V2pzTWlKcEtHbFdZOERLV0d2UXJEUzBPMSsxSFNZUjhhbk1BTXEyMGVSNGRlYVZ4amVER0RoTUpleFBFZ3ZISjlPMFZxMDJTSUY5TlZxYXJWREQwOVd6SG80QVhMamgxbjBGYU5TZGVNRkYzRGNvVDR6UHdZcUtIZVljL3JvZkhsVGhxVUF6WFhVZlM1OCtmVDIvZnZ2MURkQzN1MmJOblc1dmI0OGVQei8xMzc5N2QvQlVuSDcrWDc1TW5UODV0MGVpVDM4dVhMOC90OFBpRTFUaWlTY1BEaHcrM2NieCsvZnBHSDNteW5KbmR2MzkvOCtQcTdhN2IyNk9STDR1WFJ2SS9lUERnN0Zjem40T1BIejllcjk0ZkVJOEpmcCtoKzM5Nk16K1NJMEtUZzBtWWpEaXVGSXA4MU9iOWJ2TExGbHYrdFlKNTllclZ1ZS9PblR2bnZoNTcvdno1eGtFc2hlNTlseXdZK1dRRkkzMXUrR0h3TXdaL1NYMGVQM3o0Y1ByOSsvZjFDdjZGZUZ2bzJtRmFSUDVHWjc2MDZlOHkzT3RhNHBWUDZVZ0NwU05KNlBsTGI4YnJIKzN4SjYyT0pLejE5dzNsNTNoMGpCeEptQjlKUVBPSW9iVjB4Q3NQWTlRODdvSG02cXphSjY5MEw4UTJualdJR3ZUUks5L1NZTlVmSjl2aFJab1ZETG5VajJXYS9jckhzZjh4TGk0VWtIYXV6aGZ2dmJEaXg3RXZaRVRreVhSNHdkVSs2SDBzS3dvR2JKcXU3emRrZzRpSVBqejc0bVh3R1A4ZzliOGp1SSsvNWRtaytJSmdXY0VBMTRYeHpBTDZ6a0hSc2dQNWpvU1dPRTRRODJZRmo5NmEvbHJCT09RelV6RHhoMFlzbUppN3BjVlIzeElNTlZMNkpNNzlzaGdHNll1VDdTSStxVXlZRm9aWW56QlpxV0I4OFZ4ankrS3VJSGpCaUE5ZkxSejlYaXdaait1dlFUNWVNT1IwRGVUU0hITmxubnhua1pGVGZudFJWRjFLa0xYN20rd29jVEF3SHhCdnVIeTUra0s3MGFlcjd2VmNBbHlheEJpamV4bUZuTzBhZ2k4V21qMDJXa25UM29JQldWRzRNWTdXWDR0bjBiM0QxT0FGSTNIeENyd3Q3aFR1QjFob0ZzVUxoM3ZpZ01lWGRoZ0h4eEIvR1pWVzhpbWVYYTYwcXpqSW96anVzemVhNTFyUlpRVURwOGF2cTN5OFlCem85WG5IaVBWeHVEWWdia2ZXNW9qOUc1TWFXOEdneDBjWThUMFNyaU83ajFmZzl4bDZmRnNjR1dwY00zekNTR3pOOTF6bU5hR3I0Rnd0WHZWSHY1VjZJanpuVEo2Um1DUEgwY0tlM0V1T3BBeXprejRLejdNbm44YzY1MnJNOGlxdU43N21ONnJoci8vcDlBLzNJVlpQR3k0MitRQUFBQUJKUlU1RXJrSmdnZz09ZAIXD2QWAmYPZBYIAgMPFgIfAmcWBgIDDxBkZBYBZmQCBQ8PFgIfAmdkFhICAQ8PFgIfAQUs4KWtL+Clp+ClqCDgpK7gpL7gpLngpL/gpKTgpYAgKDcvMTIgRGV0YWlscylkZAIFDxBkDxYkZgIBAgICAwIEAgUCBgIHAggCCQIKAgsCDAINAg4CDwIQAhECEgITAhQCFQIWAhcCGAIZAhoCGwIcAh0CHgIfAiACIQIiAiMWJBAFEy0t4KSo4KS/4KS14KSh4KS+LS1lZxAFD+CkheCkleCli+CksuCkvgUBNWcQBRXgpIXgpK7gpLDgpL7gpLXgpKTgpYAFATdnEAUV4KSs4KWB4KSy4KSh4KS+4KSj4KS+BQE0ZxAFEuCkr+CkteCkpOCkruCkvuCkswUCMTRnEAUP4KS14KS+4KS24KS/4KSuBQE2ZxAFFeCkp+CkvuCksOCkvuCktuCkv+CktQUCMjlnEAUx4KSb4KSk4KWN4KSw4KSq4KSk4KWAIOCkuOCkguCkreCkvuCknOClgOCkqOCkl+CksAUCMTlnEAUP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QmpoN3JIdFJ5MG5lSmNaZHdvMkJXSXhPM1YzQUoyVVMyY3EzVXNvZnJTQjJydVpjWERLUXJSTjRXamoyWXlUOGFjN1IveEpLQ3lVVHNGUWJnaUR3anVWWm9jTXp3OWVpL0JGYmxyUmFNa3NTclk0K1FudGc5L0k1ZW50RjgwVi9QOGJvWE5SN3Z5L3hXYVFETkhhWTMyUjVSdGRoUjNobTlyWmlzZjFTWE1KSVh6T1k1Q3J1T0pBWnoyd1pVV3BBamRLN2dQSHIrTXY1YXpwYWVyaU1KWEdwZ3M0TnBhZTF0bThGZWJ2ZlZmYXZ0LzhMVkVTSnFuTE45b3loeDBTNDdDalh1bFhrenJobitrWmpkdjVKV1RnQll6VmZDM2p5MStGbnVTMnJTY3ltbTFKNFdUQzJ4TU9PemlyZUZGUnpDSHE1TGpiY0h0VHk5R3ZEYkNtWlU5QkdEdkEyY3ZmNHpXbzhZbnhDNWp4aTNmTG8vZWxmaWlBR05vcGR6dFY4dnhMZUhkNlVtY1UwZlNTVWNOVkRhZWpuZGI0K09HU2pmM3J5WEhrTnZqdXF2cE5qSGMrYi85T25UMDlYVjFXWVpNaDc1WTIvZXZMbnVLYU9VdXhlL2Z2MDZmZm55NVlaVzJZc1hMMDVmdjM3ZC9ES3R3dmZ2Mzg4eDNLK0djdFUwWkdqMVIrQmZpbWx4blZjNGM2d1JPMW9GNC9qeDQ4ZlpGK3ZoTDZFMzl0T25UNXV2NS9YOHVuLzA2RkdWMDMyemdzbGlhM3l6T0lJekl1YlFjM3VGTzVBVlREWW9MeGI2MlZsR0J6L2l6NjVDRVNobnI2RXp5OVBhWVZyYVlqL1BJK1BweFNyT1RPOXd3ZmdnZGUzWlllTE9vbU1vaWdKWld3c2xIa3c1MGNuUjgvUG56MnVQMDNaUG0vdmR1M2R2SzdhSVdzRW9mNlpqRlp5N2xHZTB2UWZFS2o1ZFlYWDJKbWtWRER6cXgzcStXVWFRNmFRSVBLZStVUVJpUEU2N2tiUnlqRVVvaHY1U3dVU1UyaStKbWdhTnlWSHpIOTVoUUNTc0ZZeDJGbUs0emhSTGJRQWc2MmVYa0NZK2RudEEwU2dHYzVCRE80enUxYjRLdDVYTE1WVXdna1NWQ3FaMERMVWcvK3d0RitqREJ3MXhjcjU5KzNidW8zQnFpTEh3OHF1SmF6eVc0cEhFY1VhODJqQmk0Kzdqa0c0TTRFdU1jOERKR0tLMkNQSy9mLy8rUHhyWUtabHJQM3Bua09YZlZMZUV0WkFWVEZZc3ZYbnd4N2VuWURBbTNibTlMKzR1K00yT1Z3VkRQT05SRGhudHVpKzlIR2lUWHp3Mm8xRU1FZElldjd0S1J1R05Ramt5RkhlWVdwQWduMWd3Y1d2WDVQVndBc1hGZ3ZINFdEQU8xeFA3b29hYXBzeFh2REowYUNmaUpTRzMvREp1MTQyeEcvaWlxb2pFa2UwU1hyamtJNjlBRzRVbS90SU9tMm1yUWY3RmdvbW9KZkFGMHNlam5qRjlUTFpFeWtkeHNXQWM3dWM3RE5lb3B3YkY5VUI1eEYySzlmeSs0UGg3d1RBdmFuZm9TTVd5SE9Jdi9ab0Rmc3pGbDBZbzZRZFpIMjNkQlZNREE5akkvaFhueGFJMnJxVXRPb1BpbWR4TU9QQ0pMeFdNeDVaNElwd25RbTkyNUk2Z1NPU1hIWW5xMDdHU1FYN3hwZkhkT3p1eUJNMGRmbDR3dE5WeWx2cUVyV0JhVGhrOHh0OG9HWlBCeE9IbmJhMWM3aDhueXhFTHh1RjZXanNNaUpwS0dsV1k4REtXR3ZRckRTME8xKzFIU1lSOGFuTUFNcTIwZVI0ZGVhVnhqZURHRGhNSmV4UEVndkhKOU8wVnEwMlNJRjlOVnFhclZERDA5V3pIbzRBWExqaDFuMEZhTlNkZU1GRjNEY29UNHpQd1lxS0hlWWMvcm9mSGxUaHFVQXpYWFVmUzU4K2ZUMi9mdnYxRGRDM3UyYk5uVzV2YjQ4ZVB6LzEzNzk3ZC9CVW5INytYNzVNblQ4NXQwZWlUMzh1WEw4L3Q4UGlFMVRpaVNjUERodyszY2J4Ky9mcEdIM215bkpuZHYzOS84K1BxN2E3YjI2T1JMNHVYUnZJL2VQRGc3RmN6bjRPUEh6OWVyOTRmRUk4SmZwK2grMzk2TXorU0kwS1RnMG1ZakRpdUZJcDgxT2I5YnZMTEZsdit0WUo1OWVyVnVlL09uVHZudmg1Ny92ejV4a0VzaGU1OWx5d1krV1FGSTMxdStHSHdNd1ovU1gwZVAzejRjUHI5Ky9mMUN2NkZlRnZvMm1GYVJQNUdaNzYwNmU4eTNPdGE0cFZQNlVnQ3BTTko2UGxMYjhickgrM3hKNjJPSkt6MTl3M2w1M2gwakJ4Sm1COUpRUE9Jb2JWMHhDc1BZOVE4N29IbTZxemFKNjkwTDhRMm5qV0lHdlRSSzkvU1lOVWZKOXZoUlpvVkRMblVqMldhL2NySHNmOHhMaTRVa0hhdXpoZnZ2YkRpeDdFdlpFVGt5WFI0d2RVKzZIMHNLd29HYkpxdTd6ZGtnNGlJUGp6NzRtWHdHUDhnOWI4anVJKy81ZG1rK0lKZ1djRUExNFh4ekFMNnprSFJzZ1A1am9TV09FNFE4MllGajk2YS9sckJPT1F6VXpEeGgwWXNtSmk3cGNWUjN4SU1OVkw2Sk03OXNoZ0c2WXVUN1NJK3FVeVlGb1pZbnpCWnFXQjg4VnhqeStLdUlIakJpQTlmTFJ6OVhpd1pqK3V2UVQ1ZU1PUjBEZVRTSEhObG5ueG5rWkZUZm50UlZGMUtrTFg3bSt3b2NUQXdIeEJ2dUh5NStrSzcwYWVyN3ZWY0FseWF4QmlqZXhtRm5PMGFnaThXbWowMldrblQzb0lCV1ZHNE1ZN1dYNHRuMGIzRDFPQUZJM0h4Q3J3dDdoVHVCMWhvRnNVTGgzdmlnTWVYZGhnSHh4Qi9HWlZXOGltZVhhNjBxempJb3pqdXN6ZWE1MXJSWlFVRHA4YXZxM3k4WUJ6bzlYbkhpUFZ4dURZZ2JrZlc1b2o5RzVNYVc4R2d4MGNZOFQwU3JpTzdqMWZnOXhsNmZGc2NHV3BjTTN6Q1NHek45MXptTmFHcjRGd3RYdlZIdjVWNklqem5USjZSbUNQSDBjS2UzRXVPcEF5emt6NEt6N01ubjhjNjUyck04aXF1Tjc3bU42cmhyLy9wOUEvM0lWWlBHeTQyK1FBQUFBQkpSVTVFcmtKZ2dnPT1kAicPDxYCHwJoZGQCBw9kFhACAw8QZGQWAGQCCQ8QZGQWAWZkAg8PEGRkFgFmZAIVDxBkZBYBZmQCGw8QZGQWAWZkAiEPEGRkFgFmZAIzDxBkZBYBZmQCNw8WAh8DBY4WZGF0YTppbWFnZS9wbmc7YmFzZTY0LGlWQk9SdzBLR2dvQUFBQU5TVWhFVWdBQUFJd0FBQUFvQ0FZQUFBQXNUUkxHQUFBQUFYTlNSMElBcnM0YzZRQUFBQVJuUVUxQkFBQ3hqd3Y4WVFVQUFBQUpjRWhaY3dBQURzTUFBQTdEQWNkdnFHUUFBQWZOU1VSQlZIaGV6Wm85amhWSkVJVG5EQndBRHdrWEYyRmg0dUhoWVNCaDRZRVBEc0xFd2NmZ0JKeUFDM0FCTHNBRk1ERGY3dGRNUEdKeXMzNjcrdTJFbE9ydXFzeklxS3JzcW42anVUcGQ0OTI3ZDlkM2Y1RzF6V0tVcStYdi9kRjNKRmZObDc0V1YyOHU5K3VOQVNPK0pZaWp4RFdTWXl1WVBhS3kyTjYybFpqaEw4WDBjSTNrazIrOENxWDJvNURsb2Ewbi8zbUhBYjJDWndjMkd0ZnluOVVCamg3ckh0UnkwbmVKY1pkd28yQldJeE8zVjNBSjJVUzJjcTNVc29mclNCMnJ1WmNYREtRclJONFdqajJZeVQ4YWM3Ui94SktDeVVUc0ZRYmdpRHdqdVZab2NNenc5ZWkvQkZibHJSYU1rc1NyWTQrUW50ZzkvSTVlbnRGODBWL1A4Ym9YTlI3dnkveFdhUUROSGFZMzJSNVJ0ZGhSM2htOXJaaXNmMVNYTUpJWHpPWTVDcnVPSkFaejJ3WlVXcEFqZEs3Z1BIcitNdjVhenBhZXJpTUpYR3BnczROcGFlMXRtOEZlYnZmVmZhdnQvOExWRVNKcW5MTjlveWh4MFM0N0NqWHVsWGt6cmhuK2taamR2NUpXVGdCWXpWZkMzankxK0ZudVMyclNjeW1tMUo0V1RDMnhNT096aXJlRkZSekNIcTVMamJjSHRUeTlHdkRiQ21aVTlCR0R2QTJjdmY0eldvOFlueEM1anhpM2ZMby9lbGZpaUFHTm9wZHp0Vjh2eExlSGQ2VW1jVTBmU1NVY05WRGFlam5kYjQrT0dTamYzcnlYSGtOdmp1cXZwTmpIYytiLzlPblQwOVhWMVdZWk1oNzVZMi9ldkxudUthT1V1eGUvZnYwNmZmbnk1WVpXMllzWEwwNWZ2MzdkL0RLdHd2ZnYzODh4M0srR2N0VTBaR2oxUitCZmltbHhuVmM0YzZ3Uk8xb0Y0L2p4NDhmWkYrdmhMNkUzOXRPblQ1dXY1L1g4dW4vMDZGR1YwMzJ6Z3NsaWEzeXpPSUl6SXViUWMzdUZPNUFWVERZb0x4YjYyVmxHQnovaXo2NUNFU2hucjZFenk5UGFZVnJhWWovUEkrUHB4U3JPVE85d3dmZ2dkZTNaWWVMT29tTW9pZ0paV3dzbEhrdzUwY25SOC9QbnoydVAwM1pQbS92ZHUzZHZLN2FJV3NFb2Y2WmpGWnk3bEdlMHZRZkVLajVkWVhYMkpta1ZERHpxeDNxK1dVYVE2YVFJUEtlK1VRUmlQRTY3a2JSeWpFVW9odjVTd1VTVTJpK0ptZ2FOeVZIekg5NWhRQ1NzRll4MkZtSzR6aFJMYlFBZzYyZVhrQ1krZG50QTBTZ0djNUJETzR6dTFiNEt0NVhMTVZVd2drU1ZDcVowRExVZy8rd3RGK2pEQncxeGNyNTkrM2J1bzNCcWlMSHc4cXVKYXp5VzRwSEVjVWE4MmpCaTQrN2prRzRNNEV1TWM4REpHS0syQ1BLL2YvLytQeHJZS1psclAzcG5rT1hmVkxlRXRaQVZURllzdlhud3g3ZW5ZREFtM2JtOUwrNHUrTTJPVndWRFBPTlJEaG50dWkrOUhHaVRYencybzFFTUVkSWV2N3RLUnVHTlFqa3lGSGVZV3BBZ24xZ3djV3ZYNVBWd0FzWEZndkg0V0RBTzF4UDdvb2FhcHN4WHZESjBhQ2ZpSlNHMy9ESnUxNDJ4Ry9paXFvakVrZTBTWHJqa0k2OUFHNFVtL3RJT20ybXJRZjdGZ29tb0pmQUYwc2VqbmpGOVRMWkV5a2R4c1dBYzd1YzdETmVvcHdiRjlVQjV4RjJLOWZ5KzRQaDd3VEF2YW5mb1NNV3lIT0l2L1pvRGZzekZsMFlvNlFkWkgyM2RCVk1EQTlqSS9oWG54YUkycnFVdE9vUGltZHhNT1BDSkx4V014NVo0SXB3blFtOTI1STZnU09TWEhZbnEwN0dTUVg3eHBmSGRPenV5Qk0wZGZsNHd0TlZ5bHZxRXJXQmFUaGs4eHQ4b0daUEJ4T0huYmExYzdoOG55eEVMeHVGNldqc01pSnBLR2xXWThES1dHdlFyRFMwTzErMUhTWVI4YW5NQU1xMjBlUjRkZWFWeGplREdEaE1KZXhQRWd2SEo5TzBWcTAyU0lGOU5WcWFyVkREMDlXekhvNEFYTGpoMW4wRmFOU2RlTUZGM0Rjb1Q0elB3WXFLSGVZYy9yb2ZIbFRocVVBelhYVWZTNTgrZlQyL2Z2djFEZEMzdTJiTm5XNXZiNDhlUHovMTM3OTdkL0JVbkg3K1g3NU1uVDg1dDBlaVQzOHVYTDgvdDhQaUUxVGlpU2NQRGh3KzNjYngrL2ZwR0gzbXluSm5kdjM5LzgrUHE3YTdiMjZPUkw0dVhSdkkvZVBEZzdGY3puNE9QSHo5ZXI5NGZFSThKZnAraCszOTZNeitTSTBLVGcwbVlqRGl1RklwODFPYjlidkxMRmx2K3RZSjU5ZXJWdWUvT25Udm52aDU3L3Z6NXhrRXNoZTU5bHl3WStXUUZJMzF1K0dId013Wi9TWDBlUDN6NGNQcjkrL2YxQ3Y2RmVGdm8ybUZhUlA1R1o3NjA2ZTh5M090YTRwVlA2VWdDcFNOSjZQbExiOGJySCszeEo2Mk9KS3oxOXczbDUzaDBqQnhKbUI5SlFQT0lvYlYweENzUFk5UTg3b0htNnF6YUo2OTBMOFEybmpXSUd2VFJLOS9TWU5VZko5dmhSWm9WRExuVWoyV2EvY3JIc2Y4eExpNFVrSGF1emhmdnZiRGl4N0V2WkVUa3lYUjR3ZFUrNkgwc0t3b0diSnF1N3pka2c0aUlQano3NG1Yd0dQOGc5YjhqdUkrLzVkbWsrSUpnV2NFQTE0WHh6QUw2emtIUnNnUDVqb1NXT0U0UTgyWUZqOTZhL2xyQk9PUXpVekR4aDBZc21KaTdwY1ZSM3hJTU5WTDZKTTc5c2hnRzZZdVQ3U0krcVV5WUZvWlluekJacVdCODhWeGp5K0t1SUhqQmlBOWZMUno5WGl3WmordXZRVDVlTU9SMERlVFNISE5sbm54bmtaRlRmbnRSVkYxS2tMWDdtK3dvY1RBd0h4QnZ1SHk1K2tLNzBhZXI3dlZjQWx5YXhCaWpleG1Gbk8wYWdpOFdtajAyV2tuVDNvSUJXVkc0TVk3V1g0dG4wYjNEMU9BRkkzSHhDcnd0N2hUdUIxaG9Gc1VMaDN2aWdNZVhkaGdIeHhCL0daVlc4aW1lWGE2MHF6aklvemp1c3plYTUxclJaUVVEcDhhdnEzeThZQnpvOVhuSGlQVnh1RFlnYmtmVzVvajlHNU1hVzhHZ3gwY1k4VDBTcmlPN2oxZmc5eGw2ZkZzY0dXcGNNM3pDU0d6Tjkxem1OYUdyNEZ3dFh2Vkh2NVY2SWp6blRKNlJtQ1BIMGNLZTNFdU9wQXl6a3o0S3o3TW5uOGM2NTJyTThpcXVONzdtTjZyaHIvL3A5QS8zSVZaUEd5NDIrUUFBQUFCSlJVNUVya0pnZ2c9PWQCBw8WAh8CaGQCCQ8WAh8CaGQCCw8WAh8CaBYCAgEPFgIfAmhkAgMPFgIfAmhkAgUPDxYCHwEFEU1haGFiaHVsZWtoQXBwNS0wZGQYAQUeX19Db250cm9sc1JlcXVpcmVQb3N0QmFja0tleV9fFgEFJWN0bDAwJENvbnRlbnRQbGFjZUhvbGRlcjEkYnRucmVmZXJlc2jKvGp+vqRma4kR79mQUQZx0R3nETbRO/cZ60maqCQWJw==" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=4x6laX7djr-kDMeE58NCNEZd3D2W1AWgP2H2y0OwA15VeJo49pJf5k_DrrBZK6tamVsHCDFo6Gxv6o0aWECG32W4iI4jspOhGtajaeA3H4Y1&amp;t=638942408819057530" type="text/javascript"></script>
+
+
+<script src="/ScriptResource.axd?d=K4XvZuRYs8rGiWVBlC09jssikDgiyKMF9M9d5Xf0g4CUEG7vIgrBMfyZvD7sb29dLwFi7dmPWNXHeHCoF9JuZM9Q-TuA-rN5sQmKsDCxEvN6mb25khDkjGcC_ZtWTv8bOiS_bi1vZyZ30Jt_z4dVBhLrvNJVSr-UX6H8_iQY85g1&amp;t=32e5dfca" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=YjSirof1TRFsT7q6PA4sBp6yxr8na6pJbXfez3b8V4cwIIaGCxV89AIPIK4SnD_pPbp34c97y_9gscjrJ-8MsODtmuS4IJbNdoopt5OhCJ7owaz7q-6kM9_96m4sTfGdRqKUvyKkRdcjCtvnqXPm7jMiuwvTlRjRtNCFVIS9tWccSv3ndRFEqSCUgkdiN0BC0&amp;t=32e5dfca" type="text/javascript"></script>
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="73A8AD02" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="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" />
+</div>
+        <div>
+            
+   
+    <script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$ContentPlaceHolder1$ScriptManager1', 'form1', ['tctl00$ContentPlaceHolder1$UpdatePanel1','ContentPlaceHolder1_UpdatePanel1'], [], [], 90, 'ctl00');
+//]]>
+</script>
+
+
+      <!-- DR DRILL POPUP -->
+          
+
+    <!-- Modal -->
+   <div id="drModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <div class="modal-header" style="background-color:#d9534f; color:white;">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Maintenance Notification / देखभाल सूचना</h4>
+      </div>
+
+     <div class="modal-body">
+        <p>
+          Our portal is currently undergoing scheduled maintenance from 2nd April 2026 at 23:59 to 5th April 2026 at 23:59. During this time, services will not be available.</br>
+        We request you to please visit the portal after the maintenance window.
+Thank you for your patience and understanding. 
+ 
+        </p>
+        <p>
+        ही वेबसाईट सध्या नियोजित देखभाल व दुरुस्तीच्या कामासाठी 2 एप्रिल २०२६ (रात्री 11:59 वाजेपासून) ते ५ एप्रिल २०२६ (रात्री 11:59 वाजेपर्यंत) या कालावधीत बंद राहील. या दरम्यान कोणतीही सेवा उपलब्ध राहणार नाही. </br>
+
+        कृपया देखभाल पूर्ण झाल्यानंतर पुन्हा वेबसाईटला भेट द्यावी. आपल्या सहकार्याबद्दल धन्यवाद.
+        </p>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+    
+
+     
+    <div class="conteiner-fluid" style="width: 100%">
+        <div class="row pb-3">
+            <div class="col-md-5">
+                <center>
+                    <img src="images/div1_map.jpg" class="img-map" />
+                </center>
+            </div>
+
+            <div class="col-md-7 back-img">                  
+                
+                
+               
+           
+                <span id="ContentPlaceHolder1_lblerrortext" style="color:Red;"></span>
+                <br />
+                <span id="ContentPlaceHolder1_lblerror12" style="color:Red;"></span>
+                <div class="row my-2">
+                    <div class="col-md-12">
+                         <span id="ContentPlaceHolder1_lblerror7" style="color:Red;"></span>
+                        <span id="ContentPlaceHolder1_lbltrans" style="color:White;background-color:Red;float: right; padding: 8px 12px; border-radius: 8px; font-size: 10px; font-weight: bold;">सूचना -: भूलेख संकेतस्थळ फक्त मराठीत उपलब्ध असून English साठी Third Party Transliteration Tools चा वापर अपेक्षित नाही.</span>                        
+                      <br />
+                        <hr />
+                        <span id="ContentPlaceHolder1_lblmain" class="lbl1"> तुम्हाला तुमचा 11 अंकी प्रॉपर्टी यूआयडी क्रमांक माहीत आहे का? ( Do You Know Your 11 Digit Property UID Number?)</span>
+                        <table id="ContentPlaceHolder1_rbtnULPIN" class="rbtnType lbl1">
+	<tr>
+		<td><span style="color: green; font-size: 18px;"><input id="ContentPlaceHolder1_rbtnULPIN_0" type="radio" name="ctl00$ContentPlaceHolder1$rbtnULPIN" value="Know-yes" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$ContentPlaceHolder1$rbtnULPIN$0\&#39;,\&#39;\&#39;)&#39;, 0)" /><label for="ContentPlaceHolder1_rbtnULPIN_0">होय(Yes)</label></span></td><td><span style="color: red; font-size: 18px;"><input id="ContentPlaceHolder1_rbtnULPIN_1" type="radio" name="ctl00$ContentPlaceHolder1$rbtnULPIN" value="Know-no" checked="checked" /><label for="ContentPlaceHolder1_rbtnULPIN_1">नाही(No)</label></span></td>
+	</tr>
+</table>
+                    </div>
+                </div>
+
+                
+
+
+                
+                      <span id="ContentPlaceHolder1_lbl712error" style="color:Red;"></span>
+                <div id="ContentPlaceHolder1_UpdatePanel1">
+	
+                           
+                        <div id="ContentPlaceHolder1_DivNotKnowULPIN">
+                            <div class="box-2">
+                                <p class="hedline-1">अधिकार अभिलेखाचा प्रकार निवडा(Select Record of Right)</p>
+                                
+                                <div class="row my-2">
+                                    <div class="col-md-12">
+                                       
+                                        <table id="ContentPlaceHolder1_rbtnSelectType" class="rbtnType lbl1">
+		<tr>
+			<td><input id="ContentPlaceHolder1_rbtnSelectType_0" type="radio" name="ctl00$ContentPlaceHolder1$rbtnSelectType" value="SelectSatbara" checked="checked" /><label for="ContentPlaceHolder1_rbtnSelectType_0">७/१२(7/12)</label></td><td><input id="ContentPlaceHolder1_rbtnSelectType_1" type="radio" name="ctl00$ContentPlaceHolder1$rbtnSelectType" value="Select8A" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$ContentPlaceHolder1$rbtnSelectType$1\&#39;,\&#39;\&#39;)&#39;, 0)" /><label for="ContentPlaceHolder1_rbtnSelectType_1">८अ(8A)</label></td><td><input id="ContentPlaceHolder1_rbtnSelectType_2" type="radio" name="ctl00$ContentPlaceHolder1$rbtnSelectType" value="SelectPC" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$ContentPlaceHolder1$rbtnSelectType$2\&#39;,\&#39;\&#39;)&#39;, 0)" /><label for="ContentPlaceHolder1_rbtnSelectType_2">मालमत्ता पत्रक(Property Card)</label></td><td><input id="ContentPlaceHolder1_rbtnSelectType_3" type="radio" name="ctl00$ContentPlaceHolder1$rbtnSelectType" value="SelectKPrat" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$ContentPlaceHolder1$rbtnSelectType$3\&#39;,\&#39;\&#39;)&#39;, 0)" /><label for="ContentPlaceHolder1_rbtnSelectType_3">क-प्रत(K-Prat)</label></td>
+		</tr>
+	</table>
+                                    </div>                                    
+                                </div>
+                            </div>
+                            <br />
+                            <div id="ContentPlaceHolder1_pnlforAll">
+		
+                                <div class="box-2">
+                                    <p class="hedline-1">
+                                        <span id="ContentPlaceHolder1_lblheading">७/१२ माहिती (7/12 Details)</span>
+                                    </p>
+                                   
+                                    <div class="row my-2">
+                                        <div class="col-md-4">
+                                            <span id="ContentPlaceHolder1_lbldist" class="lbl1">जिल्हा(District)</span>
+                                            
+                                             <select name="ctl00$ContentPlaceHolder1$ddlMainDist" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$ContentPlaceHolder1$ddlMainDist\&#39;,\&#39;\&#39;)&#39;, 0)" id="ContentPlaceHolder1_ddlMainDist" class="form-control">
+			<option selected="selected" value="">--निवडा--</option>
+			<option value="5">अकोला</option>
+			<option value="7">अमरावती</option>
+			<option value="4">बुलडाणा</option>
+			<option value="14">यवतमाळ</option>
+			<option value="6">वाशिम</option>
+			<option value="29">धाराशिव</option>
+			<option value="19">छत्रपती संभाजीनगर</option>
+			<option value="18">जालना</option>
+			<option value="15">नांदेड</option>
+			<option value="17">परभणी</option>
+			<option value="27">बीड</option>
+			<option value="28">लातूर</option>
+			<option value="16">हिंगोली</option>
+			<option value="21">ठाणे</option>
+			<option value="36">पालघर</option>
+			<option value="22">मंबई उपनगर</option>
+			<option value="32">रत्नागिरी</option>
+			<option value="24">रायगड</option>
+			<option value="33">सिंधुदुर्ग</option>
+			<option value="12">गडचिरोली</option>
+			<option value="11">गोंदिया</option>
+			<option value="13">चंद्रपूर</option>
+			<option value="9">नागपूर</option>
+			<option value="10">भंडारा</option>
+			<option value="8">वर्धा</option>
+			<option value="26">अहिल्यानगर</option>
+			<option value="3">जळगाव</option>
+			<option value="2">धुळे</option>
+			<option value="1">नंदुरबार</option>
+			<option value="20">नाशिक</option>
+			<option value="34">कोल्हापूर</option>
+			<option value="25">पुणे</option>
+			<option value="35">सांगली</option>
+			<option value="31">सातारा</option>
+			<option value="30">सोलापूर</option>
+
+		</select>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <span id="ContentPlaceHolder1_lbltal" class="lbl1">तालुका(Taluka)</span>
+                                            <span id="ContentPlaceHolder1_lblralforall" align="left" style="color:Red;">*</span><br />
+                                            <select name="ctl00$ContentPlaceHolder1$ddlTalForAll" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$ContentPlaceHolder1$ddlTalForAll\&#39;,\&#39;\&#39;)&#39;, 0)" id="ContentPlaceHolder1_ddlTalForAll" class="form-control">
+
+		</select>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <span class="lbl1">गाव(Village)</span>
+                                            <span id="ContentPlaceHolder1_lblvillforall" align="left" style="color:Red;">*</span><br />
+                                            <select name="ctl00$ContentPlaceHolder1$ddlVillForAll" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$ContentPlaceHolder1$ddlVillForAll\&#39;,\&#39;\&#39;)&#39;, 0)" id="ContentPlaceHolder1_ddlVillForAll" class="form-control">
+
+		</select>
+                                        </div>
+                                    </div>
+
+                                    <div class="row my-2">
+                                        <div class="col-md-5">
+                                            <span id="ContentPlaceHolder1_lblmetadata" class="lbl1"></span>
+
+                                            <table id="ContentPlaceHolder1_rbtnSearchType" class="rbtnType lbl1">
+			<tr>
+				<td><span id="lblrbtn"><input id="ContentPlaceHolder1_rbtnSearchType_0" type="radio" name="ctl00$ContentPlaceHolder1$rbtnSearchType" value="17" checked="checked" /><label for="ContentPlaceHolder1_rbtnSearchType_0">सर्वे नंबर/गट नंबर(Survey/Gat Number)</label></span></td><td><input id="ContentPlaceHolder1_rbtnSearchType_1" type="radio" name="ctl00$ContentPlaceHolder1$rbtnSearchType" value="18" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$ContentPlaceHolder1$rbtnSearchType$1\&#39;,\&#39;\&#39;)&#39;, 0)" /><label for="ContentPlaceHolder1_rbtnSearchType_1">नाव(Name)</label></td><td></td><td></td>
+			</tr>
+		</table>
+                                            <select name="ctl00$ContentPlaceHolder1$ddlSelectSearchType" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$ContentPlaceHolder1$ddlSelectSearchType\&#39;,\&#39;\&#39;)&#39;, 0)" id="ContentPlaceHolder1_ddlSelectSearchType" class="form-control">
+			<option selected="selected" value="--निवडा--">--निवडा--</option>
+			<option value="2"> सर्वे नंबर</option>
+			<option value="8">अक्षरी सर्वे नंबर</option>
+
+		</select>
+                                        </div>
+                                    </div>
+                                    <div id="ContentPlaceHolder1_divpropertydetails">
+                                        <div class="row my-2">
+                                            <div class="col-md-4">
+                                                <span id="ContentPlaceHolder1_lblctsono1" class="lbl1">सर्वे नंबर(भाग 1)(Survey Number(Part 1))</span>
+                                                <span id="ContentPlaceHolder1_Label3" align="left" style="color:Red;">*</span><br />
+                                                <div class="input-group">
+                                                    <input name="ctl00$ContentPlaceHolder1$txtcsno" type="text" maxlength="10" id="ContentPlaceHolder1_txtcsno" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" onkeypress="restrictToNumeric(event)" />
+                                                    
+                                                    <div class="input-group-append">
+                                                        <input type="submit" name="ctl00$ContentPlaceHolder1$btnsearchfind" value="शोधा(Search)" id="ContentPlaceHolder1_btnsearchfind" class="btn btn-success" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <span id="ContentPlaceHolder1_lblctsono" class="lbl1">सर्वे नंबर(Survey Number)</span>
+                                                <span id="ContentPlaceHolder1_Label4" align="left" style="color:Red;">*</span><br />
+                                                <select name="ctl00$ContentPlaceHolder1$ddlsurveyno" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$ContentPlaceHolder1$ddlsurveyno\&#39;,\&#39;\&#39;)&#39;, 0)" id="ContentPlaceHolder1_ddlsurveyno" class="form-control">
+
+		</select>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <span class="lbl1">मोबाईल(Mobile)</span>
+                                                <span id="ContentPlaceHolder1_Label5" align="left" style="color:Red;">*</span><br />
+                                                <input name="ctl00$ContentPlaceHolder1$txtmobile1" type="text" maxlength="10" id="ContentPlaceHolder1_txtmobile1" class="form-control" placeholder="Enter मोबाईल क्रमांक" onkeypress="restrictToNumeric(event)" onchange="clearCaptchaOnMobile1Change()" />
+                                            </div>
+
+                                        </div>
+                                        <div class="row my-2">
+                                            <div class="col-md-4">
+                                                <span class="lbl1">भाषा निवडा(Select language)</span>
+                                                <span id="ContentPlaceHolder1_Label6" align="left" style="color:Red;">*</span><br />
+                                                <select name="ctl00$ContentPlaceHolder1$ddllangforAll" onchange="clearCapchakpratOnLangChangeforall();setTimeout(&#39;__doPostBack(\&#39;ctl00$ContentPlaceHolder1$ddllangforAll\&#39;,\&#39;\&#39;)&#39;, 0)" id="ContentPlaceHolder1_ddllangforAll" class="form-control">
+			<option selected="selected" value="mr_in">Marathi</option>
+			<option value="en_in">English</option>
+			<option value="hi_in">Hindi</option>
+			<option value="bn_in">Bengali</option>
+			<option value="gj_in">Gujarati</option>
+			<option value="pn_in">Punjabi</option>
+			<option value="ml_in">Malayalam</option>
+			<option value="tm_in">Tamil</option>
+			<option value="tl_in">Telugu</option>
+			<option value="kn_in">Kannada</option>
+			<option value="or_in">Oriya</option>
+			<option value="ur_in">Urdu</option>
+			<option value="as_in">Assamese</option>
+			<option value="mn_in">Manipuri(Assamese)</option>
+			<option value="ni_in">Nepali</option>
+			<option value="ko_in">Konkani</option>
+			<option value="mi_in">Maithili(Devanagri)</option>
+			<option value="di_in">Dogri</option>
+			<option value="bo_in">Bodo</option>
+			<option value="st_in">Santhali(Devanagri)</option>
+			<option value="sd_in">Sindhi(Devanagri)</option>
+			<option value="ks_in">Kashmiri(Devanagri)</option>
+			<option value="ks.pa_in">Kashmiri(Perso Arabic)</option>
+			<option value="sk_in">Sanskrit</option>
+
+		</select>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <span id="ContentPlaceHolder1_lblcaptcha" class="lbl1">सांकेतिक क्रमांक(Captcha)</span>
+                                                <span id="ContentPlaceHolder1_Label7" align="left" style="color:Red;">*</span><br />
+                                                <input name="ctl00$ContentPlaceHolder1$txtcaptcha" type="text" maxlength="6" id="ContentPlaceHolder1_txtcaptcha" tabindex="3" class="form-control" placeholder="Enter Captcha" style="font-family:Arial Unicode MS;" />
+                                            </div>
+                                            <br />
+                                            <br />
+
+                                            <div class="col-sm-4">
+                                                <img src="data:image/png;base64,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" id="ContentPlaceHolder1_captchaImage" />
+                                                <input type="image" name="ctl00$ContentPlaceHolder1$btnreferesh" id="ContentPlaceHolder1_btnreferesh" src="Images/captcha-refresh.png" style="height:22px;margin-top: 3%; width: 30px;" />
+                                            </div>
+                                            <div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row my-2">
+                                        <div class="col-md-2"></div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-md-12" style="text-align: center">
+                                            <input type="submit" name="ctl00$ContentPlaceHolder1$btnmainsubmit" value="Submit" onclick="return validateMobileNumber();" id="ContentPlaceHolder1_btnmainsubmit" class="btn btn-info" />
+                                            <input type="submit" name="ctl00$ContentPlaceHolder1$btnresetforall" value="Reset" id="ContentPlaceHolder1_btnresetforall" class="btn btn-secondary" />
+                                        </div>
+                                    </div>
+                                </div>
+                            
+	</div>
+
+                            
+                        </div>
+
+                        <span id="ContentPlaceHolder1_lblpc"></span><br />
+                        
+
+                        
+                        
+                        
+                    
+</div>
+                <div>
+                    <div id="ContentPlaceHolder1_UpdateProgress11" style="display:none;">
+	
+                            <div class=" overlay ">
+                                <center>
+                                    <div style="margin-top: 20%; font-size: X-large; color: cornflowerblue;">
+                                        Processing , Please wait..<br />
+                                        <img alt="progress" width="200" src="images/ZC9Y.gif" />
+                                    </div>
+                                </center>
+                            </div>
+                        
+</div>
+                </div>
+            </div>
+
+            <input type="hidden" name="ctl00$ContentPlaceHolder1$hfoption" id="ContentPlaceHolder1_hfoption" />
+            <input type="hidden" name="ctl00$ContentPlaceHolder1$hfsaltstr" id="ContentPlaceHolder1_hfsaltstr" />
+            <input type="hidden" name="ctl00$ContentPlaceHolder1$HiddenField1" id="ContentPlaceHolder1_HiddenField1" />
+            <input type="hidden" name="ctl00$ContentPlaceHolder1$HiddenField2" id="ContentPlaceHolder1_HiddenField2" />
+            <input type="hidden" name="ctl00$ContentPlaceHolder1$HiddenField3" id="ContentPlaceHolder1_HiddenField3" />
+            <input type="hidden" name="ctl00$ContentPlaceHolder1$HiddenField4" id="ContentPlaceHolder1_HiddenField4" />
+            <input type="hidden" name="ctl00$ContentPlaceHolder1$HiddenField5" id="ContentPlaceHolder1_HiddenField5" />
+            <input type="hidden" name="ctl00$ContentPlaceHolder1$HiddenField6" id="ContentPlaceHolder1_HiddenField6" />
+            <input type="hidden" name="ctl00$ContentPlaceHolder1$HiddenField7" id="ContentPlaceHolder1_HiddenField7" />
+            <input type="hidden" name="ctl00$ContentPlaceHolder1$HiddenField8" id="ContentPlaceHolder1_HiddenField8" />
+            <input type="hidden" name="ctl00$ContentPlaceHolder1$HiddenField9" id="ContentPlaceHolder1_HiddenField9" />
+            <input type="hidden" name="ctl00$ContentPlaceHolder1$hfdesig" id="ContentPlaceHolder1_hfdesig" />
+            <input type="hidden" name="ctl00$ContentPlaceHolder1$hfcode" id="ContentPlaceHolder1_hfcode" />
+
+        </div>
+    </div>
+
+    <input type="hidden" name="ctl00$ContentPlaceHolder1$hfcaptchacheck" id="ContentPlaceHolder1_hfcaptchacheck" />
+    <input type="hidden" name="ctl00$ContentPlaceHolder1$hfcaptchacheckPOSTING" id="ContentPlaceHolder1_hfcaptchacheckPOSTING" />
+
+        </div>
+
+
+        <div class="logo-grd">
+            <div class="logo-img">
+                <center>
+                    <a href="https://digitalsatbara.mahabhumi.gov.in/aaplichawdi">
+                         <abbr title="Aapli Chawadi"><img src="image/chawadi.png" class="logo-grd-img" /></abbr>
+                    </a>
+                </center>
+            </div>
+            <div class="logo-img">
+               <center>
+                   <a href="https://digitalsatbara.mahabhumi.gov.in/dslr">
+                          <abbr title="Digitally Signed 7/12"><img src="image/esign.png" class="logo-grd-img" /></abbr>
+                    </a>
+               </center>
+            </div>
+            <div class="logo-img">
+              <center>
+                   <a href="https://bhumiabhilekh.maharashtra.gov.in">
+     <abbr title="e-Hakk"> <img src="image/ehakk.png" class="logo-grd-img" /></abbr>
+ </a>
+              </center>
+            </div>
+            <div class="logo-img">
+               <center>
+                   <a href="https://cersai.org.in/CERSAI/home.prg">
+    <abbr title="CERSAI"> <img src="image/CERSAI.png" class="logo-grd-img" /></abbr>
+</a>
+               </center>
+            </div>
+            <div class="logo-img">
+               <center>
+                   <a href="https://eqjcourts.gov.in/startup/default.php">
+     <abbr title="e-QJCourts"><img src="image/eqjcourt.png" class="logo-grd-img" /></abbr>
+</a>
+               </center>
+            </div>
+                       <div class="logo-img">
+             <center>
+                  <a href="http://srdp1991.mcgm.gov.in/dpGis">
+     <abbr title="GIS MCGM"><img src="image/MCGM.png" class="logo-grd-img" /></abbr>
+</a>
+             </center>
+           </div>
+            <div class="logo-img">
+               <center>
+                   <a href="https://mumbaisuburban.gov.in/land-records-maps/">
+     <abbr title="Mumbai Suburban LR Maps"><img src="image/map.png" class="logo-grd-img" /></abbr>
+</a>
+               </center>
+            </div>
+            
+        </div>
+
+        <!----------- Footer ------------>
+        <div class="footer-bs">
+            <footer class="container-fluid">
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <p class="foot-para">महत्वाची सूचना -: जर  आपण  पाहिलेल्या  ऑनलाईन ७ /१२  मधील माहितीमध्ये  व हस्तलिखित ७/१२ मधील माहिती मध्ये ,  जसे  ७/१२ चे एकूण  क्षेत्र , क्षेत्राचे एकक , खातेदाराचे  नाव, खातेदाराचे  क्षेत्र  या   मध्ये   चूक   अथवा  तफावत  आढळून आल्यास  आपण  अशा    दुरुस्तीसाठी   ऑनलाईन  पद्धातीने  तलाठी यांचेकडे  ई हक्क प्रणाली द्वारे अर्ज  पाठवू  शकता . त्यासाठी   कृपया  <span><a  href=' https://bhumiabhilekh.maharashtra.gov.in' target='_blank'>https://bhumiabhilekh.maharashtra.gov.in</a> </span>  ही लिंक वापरून     Mutation ७/१२  या पर्यायामध्ये  दर्शवलेल्या  माहिती   नुसार  आपले   रजिस्ट्रेशन  व लॉगीन करून जुना हस्तलिखित ७/१२ ऑनलाईन अर्जासोबत अपलोड (Upload) करावा .</p>
+                    </div>
+                   
+                    
+                </div>
+                <hr class="line" />
+                 <div class="row">
+                            <div class="col-md-12">
+                                <center>
+                                    <p class="foot-para-1">
+                                         सुचना : या संकेतस्थळावर दर्शविलेली माहिती ही कोणत्याही शासकीय अथवा कायदेशीर बाबींसाठी वापरता येणार नाही.<br />
+                                         
+                                          <b>जमाबंदी आयुक्त आणि संचालक भूमि अभिलेख कार्यालय 
+                                           
+                                          तिसरा मजला, नवीन प्रशासकीय इमारत, कौन्सिल हॉल समोर, पुणे
+                                           दूरध्वनी : ०२०-२६०५०००६, 
+                                           ई-मेल :  dlrmah[dot]mah[at]nic[dot]in</b><br />
+                                        
+                                     Website Content Managed by <a class="text-light font-weight-bold" href="https://www.nic.in/">National Informatics Centre</a>, <a class="text-light font-weight-bold" href="https://meity.gov.in/">Ministry of Electronics and IT</a>, <a class="text-light font-weight-bold" href="https://www.india.gov.in/">Government Of India.</a>
+                                     <span id="lblip" style="color:#158081;font-size:1px;">MahabhulekhApp5-0</span>
+                                </p>
+                                </center>
+                            </div>
+                     <div style="display: inline; ">  
+                                    <table border="0" width="100%" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td width="100%">
+                                                <!--- DO NOT EDIT - GlobalSign SSL Site Seal Code - DO NOT EDIT ---><table align=right width=125 border=0 cellspacing=0 cellpadding=0 title="CLICK TO VERIFY: This site uses a GlobalSign SSL Certificate to secure your personal information." ><tr><td><span id="ss_img_wrapper_gmogs_image_90-35_en_blue"><a href="https://www.globalsign.com/" target=_blank title="GlobalSign Site Seal" rel="nofollow"><img alt="SSL" border=0 id="ss_img" src="Images/gs_noscript_90-35_en.gif"></a></span><script type="text/javascript" src="https://seal.globalsign.com/SiteSeal/gmogs_image_90-35_en_blue.js"></script></td></tr></table><!--- DO NOT EDIT - GlobalSign SSL Site Seal Code - DO NOT EDIT --->
+                                            </td>
+                                        </tr> 
+                                    </table>
+                                </div>
+                        </div>
+            </footer>
+        </div>
+    
+
+<script type="text/javascript">
+//<![CDATA[
+Sys.Application.add_init(function() {
+    $create(Sys.UI._UpdateProgress, {"associatedUpdatePanelId":"ContentPlaceHolder1_UpdatePanel1","displayAfter":500,"dynamicLayout":true}, null, null, $get("ContentPlaceHolder1_UpdateProgress11"));
+});
+//]]>
+</script>
+</form>
+    <script src="https://cdn.userway.org/widget.js" data-account="gtwMEnfvIr"></script>
+
+       <!-- Bootstrap core JavaScript -->
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.slicknav.min.js"></script>
+
+
+    
+  <!-- Menu Toggle Script -->
+  <script>
+      $("#menu-toggle").click(function (e) {
+          e.preventDefault();
+          $("#wrapper").toggleClass("toggled");
+      });
+  </script>
+
+
+
+<script>
+    // number count for stats, using jQuery animate
+
+    $('.counting').each(function () {
+        var $this = $(this),
+            countTo = $this.attr('data-count');
+
+        $({ countNum: $this.text() }).animate({
+            countNum: countTo
+        },
+
+            {
+
+                duration: 3000,
+                easing: 'linear',
+                step: function () {
+                    $this.text(Math.floor(this.countNum));
+                },
+                complete: function () {
+                    $this.text(this.countNum);
+                    //alert('finished');
+                }
+
+            });
+
+    });
+</script>
+ 
+  <script type="text/javascript">  
+      $('.Count').each(function () {
+          $(this).prop('Counter', 0).animate({
+              Counter: $(this).text()
+          }, {
+              duration: 2000,
+              easing: 'swing',
+              step: function (now) {
+                  $(this).text(Math.ceil(now));
+              }
+          });
+      });
+  </script>  
+
+
+  <script>
+      $(document).ready(function () {
+          $(".b-navdropdown-click").click(function () {
+              if ($(".b-navdropdown").hasClass("hide")) {
+                  $(".b-navdropdown").addClass("show");
+                  $(".b-navdropdown").removeClass("hide");
+                  // $(".b-icon-up").show();
+                  // $(".b-icon-down").hide();
+              }
+              else if ($(".b-navdropdown").hasClass("show")) {
+                  $(".b-navdropdown").addClass("hide");
+                  $(".b-navdropdown").removeClass("show");
+                  // $(".b-icon-down").show();
+                  // $(".b-icon-up").hide();
+              }
+          });
+      });
+
+  </script>
+
+
+      
+
+</body>
+</html>
