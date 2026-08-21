@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap');
+@import './tokens.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-outline-variant;
+  }
+
+  html {
+    font-family: 'Inter', sans-serif;
+    background: var(--color-background);
+    color: var(--color-on-surface);
+  }
+
+  body {
+    @apply min-h-screen bg-surface text-on-surface antialiased;
+    background-image:
+      radial-gradient(circle at top left, rgba(213, 227, 252, 0.36), transparent 32%),
+      radial-gradient(circle at bottom right, rgba(215, 226, 255, 0.42), transparent 26%);
+  }
+
+  a {
+    @apply transition-colors;
+  }
+
+  button {
+    @apply transition-all;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+  }
+
+  .ambient-card {
+    border-radius: 1.5rem;
+    background: var(--color-surface-container-lowest);
+    box-shadow: 0 12px 32px rgba(25, 28, 30, 0.06);
+  }
+
+  .page-shell {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 80rem;
+    padding: 6rem 1rem 3.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .page-shell {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .page-shell {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  .section-eyebrow {
+    color: var(--color-on-surface-variant);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+
+  .field-shell {
+    width: 100%;
+    border: 1px solid transparent;
+    border-radius: 1rem;
+    background: var(--color-surface-container-low);
+    color: var(--color-on-surface);
+    font-size: 0.875rem;
+    outline: none;
+    padding: 0.75rem 1rem;
+    transition:
+      background-color 150ms ease,
+      border-color 150ms ease,
+      box-shadow 150ms ease;
+  }
+
+  .field-shell:focus {
+    background: #ffffff;
+    border-color: rgba(3, 22, 50, 0.2);
+    box-shadow:
+      0 0 0 4px rgba(3, 22, 50, 0.06),
+      0 4px 12px rgba(25, 28, 30, 0.04);
+  }
+
+  .sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    border-radius: 1rem;
+    padding: 0.75rem 1rem;
+    color: var(--color-on-surface-variant);
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  .sidebar-link:hover {
+    background: var(--color-surface-container-high);
+    color: var(--color-primary);
+  }
+
+  .sidebar-link-active {
+    background: var(--color-surface-container-lowest);
+    color: var(--color-primary);
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(25, 28, 30, 0.04);
+  }
+}
