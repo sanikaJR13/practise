@@ -11,6 +11,9 @@ __pycache__/
 storage/
 staticfiles/
 db.sqlite3
+runs_igr/
+scratch/
+new/
 
 # OS/System files
 .DS_Store
