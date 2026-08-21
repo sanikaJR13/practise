@@ -66,18 +66,18 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'bhulekh_backend.wsgi.application'
 
-# Database - PostgreSQL Only (dj-database-url is used on Render)
+# Database - PostgreSQL on Render/Production, SQLite fallback for easy deployment
 DATABASE_URL = os.environ.get("DATABASE_URL")
+DB_HOST = os.environ.get("DB_HOST")
 
 if DATABASE_URL:
     DATABASES = {
         'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
     }
-else:
+elif DB_HOST:
     DB_NAME = os.environ.get("DB_NAME", "property_712_db")
     DB_USER = os.environ.get("DB_USER", "postgres")
     DB_PASSWORD = os.environ.get("DB_PASSWORD", "postgres")
-    DB_HOST = os.environ.get("DB_HOST", "localhost")
     DB_PORT = os.environ.get("DB_PORT", "5432")
     DATABASES = {
         'default': {
@@ -87,6 +87,13 @@ else:
             'PASSWORD': DB_PASSWORD,
             'HOST': DB_HOST,
             'PORT': DB_PORT,
+        }
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
 
