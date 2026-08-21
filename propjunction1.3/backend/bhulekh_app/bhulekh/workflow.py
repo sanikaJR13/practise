@@ -62,7 +62,7 @@ from .exceptions import (
     TalukaLoadError,
     VillageLoadError,
 )
-from .final_record_parser import parse_final_record_html
+from .final_record_parser import format_record_as_text, parse_final_record_html
 from .form_state import FormStateManager
 from .logging_utils import configure_logger
 from .models import BhulekhNormalizedResult, BhulekhRawResult, ErrorInfo, PropertyInput, WorkflowState
@@ -128,6 +128,26 @@ class BhulekhWorkflow:
         if isinstance(last_error, NavigationError):
             raise last_error
         raise NavigationError("Failed to load homepage.", recoverable=True, details={"error": str(last_error)})
+
+    def select_record_type(self, record_type: str = "Select8A") -> WorkflowState:
+        self._ensure_home_loaded()
+        payload = self._build_postback_payload(
+            source_control=f"{FIELD_RECORD_TYPE}$1",
+            event_target=f"{FIELD_RECORD_TYPE}$1",
+            updates={FIELD_RECORD_TYPE: record_type},
+        )
+        self._retry_step(
+            "select_record_type",
+            payload,
+            success_check=lambda: True,
+            error_factory=lambda: NavigationError(
+                "Record type selection postback failed.",
+                recoverable=True,
+            ),
+        )
+        self.form.mark_step("record_type_selected", stable=True)
+        self._record_metadata("record_type_selected", {"record_type": record_type})
+        return self.state
 
     def select_district(self, district: str | None = None) -> WorkflowState:
         self._ensure_home_loaded()
@@ -545,9 +565,16 @@ class BhulekhWorkflow:
             classification = "success_result_image_only"
         else:
             classification = "partial_result"
+
+        final_text = ""
+        if record_report and record_report.get("source", {}).get("record_html_found"):
+            final_text = format_record_as_text(record_report)
+        else:
+            final_text = extract_visible_text(html)
+
         return BhulekhRawResult(
             final_html=html,
-            final_text=extract_visible_text(html),
+            final_text=final_text,
             page_markers=markers,
             classification=classification,
             alerts=alerts,
@@ -641,6 +668,7 @@ class BhulekhWorkflow:
 
     def start(self):
         self.load_home()
+        self.select_record_type(self.state.input.record_type)
         self.select_district()
         self.select_taluka()
         self.select_village()
@@ -658,6 +686,7 @@ class BhulekhWorkflow:
         self.logger.bind_step("replay").warning("Replaying workflow from latest stable step: %s", stable_step)
 
         self.load_home()
+        self.select_record_type(self.state.input.record_type)
         if stable_step in {"district_selected", "taluka_selected", "village_selected", "survey_searched", "survey_selected"}:
             self.select_district(self.state.input.district)
         if stable_step in {"taluka_selected", "village_selected", "survey_searched", "survey_selected"}:
@@ -718,7 +747,7 @@ class BhulekhWorkflow:
             FIELD_RBTN_ULPIN: self.state.input.rbtn_ulpin,
             FIELD_RECORD_TYPE: self.state.input.record_type,
             FIELD_SEARCH_TYPE_RADIO: self.state.input.search_type_radio,
-            FIELD_SEARCH_TYPE_DROPDOWN: self.state.input.search_type_dropdown,
+            FIELD_SEARCH_TYPE_DROPDOWN: "2" if self.state.step in {"initialized", "home_loaded"} else self.state.input.search_type_dropdown,
             FIELD_DISTRICT: self.state.selected_district or "",
             FIELD_TALUKA: self.state.selected_taluka or "",
             FIELD_VILLAGE: self.state.selected_village or "",

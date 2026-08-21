@@ -130,17 +130,6 @@ def restore_bhulekh_workflow(run: WorkflowRun) -> BhulekhWorkflow:
         
     return workflow
 
-<<<<<<< HEAD:propjunction1.3/backend/scraper_712/bhulekh_app/views.py
-# In-memory caches for locations and surveys
-LOCATIONS_CACHE = {
-    "districts": [],     # list of dicts: [{"label": "...", "value": "..."}]
-    "talukas": {},       # key: district_value, value: list of dicts
-    "villages": {}       # key: f"{district_value}_{taluka_value}", value: list of dicts
-}
-
-SURVEYS_CACHE = {}      # key: f"{district_value}_{taluka_value}_{village_value}_{survey_number_part1}", value: list of dicts
-
-=======
 
 # In-memory caches for locations and surveys
 LOCATIONS_DATA_FILE = Path(__file__).parent / "locations_data.json"
@@ -155,75 +144,12 @@ def load_static_locations():
             print(f"Failed to load static locations JSON: {e}")
     return {"districts": [], "talukas": {}, "villages": {}}
 
->>>>>>> origin/main:backend/bhulekh_app/views.py
 # API Views
 
 def get_locations(request):
     """Fetch locations from locally stored static data."""
     district_value = request.GET.get("district_value")
     taluka_value = request.GET.get("taluka_value")
-<<<<<<< HEAD:propjunction1.3/backend/scraper_712/bhulekh_app/views.py
-    try:
-        # Load districts from cache or fetch live
-        districts = LOCATIONS_CACHE["districts"]
-        if not districts:
-            prop_in = PropertyInput(
-                district="interactive", 
-                taluka="interactive",
-                village="interactive",
-                survey_number="1"
-            )
-            wf = BhulekhWorkflow(property_input=prop_in, artifact_root=str(STORAGE_ROOT))
-            wf.load_home()
-            districts = [{"label": opt.text, "value": opt.value} for opt in wf.state.district_options]
-            LOCATIONS_CACHE["districts"] = districts
-        
-        talukas = []
-        if district_value:
-            talukas = LOCATIONS_CACHE["talukas"].get(district_value)
-            if not talukas:
-                prop_in = PropertyInput(
-                    district=district_value, 
-                    taluka="interactive",
-                    village="interactive",
-                    survey_number="1"
-                )
-                wf = BhulekhWorkflow(property_input=prop_in, artifact_root=str(STORAGE_ROOT))
-                wf.load_home()
-                wf.select_district(district_value)
-                talukas = [{"label": opt.text, "value": opt.value} for opt in wf.state.taluka_options]
-                LOCATIONS_CACHE["talukas"][district_value] = talukas
-            
-        villages = []
-        if district_value and taluka_value:
-            cache_key = f"{district_value}_{taluka_value}"
-            villages = LOCATIONS_CACHE["villages"].get(cache_key)
-            if not villages:
-                prop_in = PropertyInput(
-                    district=district_value, 
-                    taluka=taluka_value,
-                    village="interactive",
-                    survey_number="1"
-                )
-                wf = BhulekhWorkflow(property_input=prop_in, artifact_root=str(STORAGE_ROOT))
-                wf.load_home()
-                wf.select_district(district_value)
-                wf.select_taluka(taluka_value)
-                villages = [{"label": opt.text, "value": opt.value} for opt in wf.state.village_options]
-                LOCATIONS_CACHE["villages"][cache_key] = villages
-            
-        return JsonResponse({
-            "districts": districts,
-            "talukas": talukas,
-            "villages": villages
-        })
-    except Exception as exc:
-        print(f"Live locations fetch failed: {exc}, falling back to static Pune options.")
-        # Static mock options for testing:
-        dist_options = [{"label": "Pune", "value": "27"}]
-        tal_options = []
-        vil_options = []
-=======
     
     data = load_static_locations()
     districts = data.get("districts") or []
@@ -240,7 +166,6 @@ def get_locations(request):
     # If the JSON file doesn't exist or is empty, we fall back to static Pune options
     if not districts:
         districts = [{"label": "Pune", "value": "27"}]
->>>>>>> origin/main:backend/bhulekh_app/views.py
         if district_value == "27":
             talukas = [{"label": "Haveli", "value": "1"}]
             if taluka_value == "1":
@@ -280,6 +205,7 @@ def get_surveys(request):
         )
         wf = BhulekhWorkflow(property_input=prop_in, artifact_root=str(STORAGE_ROOT))
         wf.load_home()
+        wf.select_record_type()
         wf.select_district(district_value)
         wf.select_taluka(taluka_value)
         wf.select_village(village_value)
@@ -358,6 +284,7 @@ def start_workflow(request):
             run_id=run_id,
         )
         workflow.load_home()
+        workflow.select_record_type()
         workflow.select_district()
         workflow.select_taluka()
         workflow.select_village()

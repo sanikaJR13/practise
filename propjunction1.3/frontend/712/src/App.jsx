@@ -164,10 +164,6 @@ export default function App() {
       setErrorMessage('Please fill in all required fields.');
       return;
     }
-    if (!surveyNumber) {
-      setErrorMessage('Please search and select a specific survey option from the dropdown.');
-      return;
-    }
 
     setStatus('initiating');
     setErrorMessage(null);
@@ -182,7 +178,6 @@ export default function App() {
           district,
           taluka,
           village,
-          survey_number: surveyNumber,
           survey_number_part1: surveyNumberPart1,
           mobile: mobileNumber || null,
           language,
@@ -199,6 +194,10 @@ export default function App() {
         setStatus('captcha_pending');
         setCaptchaImage(data.captcha_image_base64);
         setCaptchaMime(data.mime_type || 'image/png');
+        setSurveyOptions(data.survey_options || []);
+        if (data.survey_options && data.survey_options.length > 0) {
+          setSurveyNumber(data.survey_options[0].value);
+        }
       } else {
         // Direct success (if cached or auto-resolved)
         setStatus('success');
@@ -217,10 +216,14 @@ export default function App() {
       setErrorMessage('Please enter the CAPTCHA text.');
       return;
     }
+    if (!surveyNumber) {
+      setErrorMessage('Please select a specific survey option.');
+      return;
+    }
 
     setStatus('executing');
     setErrorMessage(null);
-
+ 
     try {
       const res = await fetch(`${API_BASE_URL}/workflows/submit-captcha`, {
         method: 'POST',
@@ -228,6 +231,7 @@ export default function App() {
         body: JSON.stringify({
           run_id: runId,
           captcha_text: captchaText,
+          survey_number: surveyNumber,
         }),
       });
 
@@ -447,47 +451,19 @@ export default function App() {
                   </div>
                 </div>
 
-                {/* Survey rows */}
-                <div className="form-row">
-                  <div className="form-group">
-                    <label className="form-label">Survey / Gat No. (Base) *</label>
-                    <div className="search-input-group">
-                      <input 
-                        type="text" 
-                        placeholder="e.g. 1 or 10"
-                        value={surveyNumberPart1} 
-                        onChange={(e) => setSurveyNumberPart1(e.target.value)}
-                        className="form-control"
-                        disabled={!village || status === 'initiating'}
-                      />
-                      <button
-                        type="button"
-                        onClick={handleSearchSurveys}
-                        className="search-icon-btn"
-                        disabled={!village || !surveyNumberPart1.trim() || loadingSurveys || status === 'initiating'}
-                      >
-                        {loadingSurveys ? (
-                          <RefreshCw size={16} className="spinner" />
-                        ) : (
-                          <Search size={16} />
-                        )}
-                      </button>
-                    </div>
-                  </div>
-
-                  <div className="form-group">
-                    <label className="form-label">Select Survey Number Option *</label>
-                    <select
-                      value={surveyNumber}
-                      onChange={(e) => setSurveyNumber(e.target.value)}
+                {/* Survey input */}
+                <div className="form-group">
+                  <label className="form-label">Survey / Gat No. (Base) *</label>
+                  <div className="input-container">
+                    <span className="input-icon-left"><Hash size={16} /></span>
+                    <input 
+                      type="text" 
+                      placeholder="e.g. 1 or 10"
+                      value={surveyNumberPart1} 
+                      onChange={(e) => setSurveyNumberPart1(e.target.value)}
                       className="form-control"
-                      disabled={status === 'initiating' || surveyOptions.length === 0}
-                    >
-                      <option value="">Select Survey Number</option>
-                      {surveyOptions.map(opt => (
-                        <option key={opt.value} value={opt.value}>{opt.label}</option>
-                      ))}
-                    </select>
+                      disabled={!village || status === 'initiating'}
+                    />
                   </div>
                 </div>
 
@@ -585,6 +561,21 @@ export default function App() {
                 </div>
 
                 <form onSubmit={handleSubmitCaptcha} className="flex flex-col gap-3">
+                  <div className="form-group">
+                    <label className="form-label">Select Survey Number Option *</label>
+                    <select
+                      value={surveyNumber}
+                      onChange={(e) => setSurveyNumber(e.target.value)}
+                      className="form-control"
+                      disabled={status === 'executing' || surveyOptions.length === 0}
+                    >
+                      <option value="">Select Survey Number</option>
+                      {surveyOptions.map(opt => (
+                        <option key={opt.value} value={opt.value}>{opt.label}</option>
+                      ))}
+                    </select>
+                  </div>
+
                   <div className="form-group">
                     <label className="form-label text-center">Enter CAPTCHA Code *</label>
                     <input 
